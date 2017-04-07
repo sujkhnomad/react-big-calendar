@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CustomComponent extends Component {
   testfun(e){
     e.stopPropagation();
-    console.log('클릭되었습니다.', e);
+    console.log('CustomComponent 클릭되었습니다.');
   }
 
   render() {
@@ -68,8 +68,8 @@ export default [
   },
   {
     'title': 'Meeting',
-    'start':new Date(2015, 3, 12,14, 0, 0, 0),
-    'end': new Date(2015, 3, 12,15, 0, 0, 0)
+    'start':new Date(2015, 3, 12, 14, 0, 0, 0),
+    'end': new Date(2015, 3, 12, 15, 0, 0, 0)
   },
   {
     'title': 'Happy Hour',
