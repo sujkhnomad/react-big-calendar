@@ -23,7 +23,11 @@ let MyCustomHeader = React.createClass({
 })
 
 
-let CustomHeader = React.createClass({
+class CustomHeader extends React.Component {
+  headDateClick(viewType){
+    console.log ('headDateClick now view type : ', viewType);
+  }
+
   render(){
     return (
       <BigCalendar
@@ -35,9 +39,10 @@ let CustomHeader = React.createClass({
           week: {header: MyCustomHeader},
           month: {header: MyCustomHeader}
         }}
+        headDateClick={this.headDateClick.bind(this)}
       />
     )
   }
-})
+}
 
 export default CustomHeader;

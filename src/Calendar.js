@@ -430,7 +430,8 @@ let Calendar = React.createClass({
       day: PropTypes.node,
       agenda: PropTypes.node,
       showMore: PropTypes.func
-    })
+    }),
+    headDateClick:React.PropTypes.func
   },
 
   getDefaultProps() {
@@ -532,6 +533,7 @@ let Calendar = React.createClass({
             onViewChange={this.handleViewChange}
             onNavigate={this.handleNavigate}
             messages={this.props.messages}
+            headDateClick={this.props.headDateClick}
           />
         }
         <View
