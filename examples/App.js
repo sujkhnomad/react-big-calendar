@@ -4,10 +4,10 @@ import Intro from './Intro.md';
 import cn from 'classnames';
 import { render } from 'react-dom';
 
-import localizer from 'react-big-calendar/lib/localizers/globalize';
-import globalize from 'globalize';
-
-localizer(globalize);
+import localizer from 'react-big-calendar/lib/localizers/moment';
+import moment from 'moment';
+moment.locale('ko');
+localizer(moment);
 
 import 'react-big-calendar/lib/less/styles.less';
 import './styles.less';
