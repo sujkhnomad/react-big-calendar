@@ -7,34 +7,34 @@ function inSame12Hr(start, end){
 }
 
 let dateRangeFormat = ({ start, end }, culture, local)=>
-  local.format(start, 'd', culture) + ' — ' + local.format(end, 'd', culture)
+  local.format(start, 'MM[.]DD', culture) + ' — ' + local.format(end, 'MM[.]DD', culture)
 
 let timeRangeFormat = ({ start, end }, culture, local)=>
-  local.format(start, 'h:mmtt', culture) +
-    ' — ' + local.format(end, inSame12Hr(start, end) ? 'h:mm' : 'h:mmtt', culture)
+  local.format(start, 'h:mm', culture) +
+    ' — ' + local.format(end, inSame12Hr(start, end) ? 'h:mm' : 'h:mm', culture)
 
 let weekRangeFormat = ({ start, end }, culture, local)=>
-  local.format(start, 'MMM dd', culture) +
-    ' - ' + local.format(end, dates.eq(start, end, 'month') ? 'dd' : 'MMM dd', culture)
+  local.format(start, 'MM[.]DD', culture) +
+    ' - ' + local.format(end, dates.eq(start, end, 'month') ? 'MM[.]DD' : 'MM[.]DD', culture)
 
 let formats = {
 
-  dateFormat: 'dd',
-  dayFormat: 'ddd dd/MM',
+  dateFormat: 'DD',
+  dayFormat: 'MM/DD(ddd)',
   weekdayFormat: 'ddd',
 
   selectRangeFormat: timeRangeFormat,
   eventTimeRangeFormat: timeRangeFormat,
 
-  timeGutterFormat: 'h:mm tt',
+  timeGutterFormat: 'h:mm',
 
-  monthHeaderFormat: 'MMMM yyyy',
-  dayHeaderFormat: 'dddd MMM dd',
+  monthHeaderFormat: 'YYYY[.] MM',
+  dayHeaderFormat: 'YYYY[.]MM[.]DD',
   dayRangeHeaderFormat: weekRangeFormat,
   agendaHeaderFormat: dateRangeFormat,
 
-  agendaDateFormat: 'ddd MMM dd',
-  agendaTimeFormat: 'hh:mm tt',
+  agendaDateFormat: 'YYYY[.]MM[.]DD',
+  agendaTimeFormat: 'hh:mm',
   agendaTimeRangeFormat: timeRangeFormat
 }
 
@@ -42,7 +42,7 @@ export function set(_formats){
   if (arguments.length > 1)
     _formats = { [_formats]: arguments[1] }
 
-  Object.assign(formats, _formats)
+  Object.assign(_formats, formats)
 }
 
 export default function format(fmts){
