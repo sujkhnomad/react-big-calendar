@@ -15,7 +15,7 @@ let propTypes = {
   allDayAccessor: accessor,
   startAccessor: accessor,
   endAccessor: accessor,
-
+  isCustomAccessor: accessor,
   eventComponent: elementType,
   eventWrapperComponent: elementType.isRequired,
   onSelect: React.PropTypes.func
@@ -40,6 +40,7 @@ class EventCell extends React.Component {
       , end = get(event, endAccessor)
       , start = get(event, startAccessor)
       , isAllDay = get(event, props.allDayAccessor)
+      , CustomComponent = event.CustomComponent
       , continuesPrior = dates.lt(start, slotStart, 'day')
       , continuesAfter = dates.gt(end, slotEnd, 'day')
 
@@ -63,7 +64,9 @@ class EventCell extends React.Component {
               ? <Event event={event} title={title}/>
               : title
             }
+            {CustomComponent && React.cloneElement(CustomComponent)}
           </div>
+
         </div>
       </EventWrapper>
     );
