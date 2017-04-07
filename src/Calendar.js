@@ -431,7 +431,8 @@ let Calendar = React.createClass({
       agenda: PropTypes.node,
       showMore: PropTypes.func
     }),
-    headDateClick:React.PropTypes.func
+    headDateClick:React.PropTypes.func,
+    sundayColor:React.PropTypes.string
   },
 
   getDefaultProps() {

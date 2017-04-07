@@ -14,3 +14,7 @@ export let views = {
   DAY: 'day',
   AGENDA: 'agenda'
 }
+
+export let DEFUALT_COLOR = {
+  SUNDAY:'#bdbdbd'
+};

@@ -6,7 +6,7 @@ import dates from './utils/dates';
 import localizer from './localizer'
 import chunk from 'lodash/chunk';
 
-import { navigate, views } from './utils/constants';
+import { navigate, views, DEFUALT_COLOR } from './utils/constants';
 import { notify } from './utils/helpers';
 import getPosition from 'dom-helpers/query/position';
 import raf from 'dom-helpers/util/requestAnimationFrame';
@@ -18,6 +18,7 @@ import Header from './Header';
 
 import { accessor, dateFormat } from './utils/propTypes';
 import { segStyle, inRange, sortEvents } from './utils/eventLevels';
+
 
 let eventsForWeek = (evts, start, end, props) =>
   evts.filter(e => inRange(e, start, end, props));
@@ -71,6 +72,7 @@ let propTypes = {
       y: React.PropTypes.number
     })
   ]),
+  sundayColor: React.PropTypes.string
 };
 
 let MonthView = React.createClass({
@@ -202,12 +204,13 @@ let MonthView = React.createClass({
   },
 
   readerDateHeading({ date, className, ...props }) {
-    let { date: currentDate, getDrilldownView, dateFormat, culture  } = this.props;
-
+    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor  } = this.props;
     let isOffRange = dates.month(date) !== dates.month(currentDate);
     let isCurrent = dates.eq(date, currentDate, 'day');
     let drilldownView = getDrilldownView(date);
     let label = localizer.format(date, dateFormat, culture);
+    let isSunDay = date.getDay() === 0;
+    let selectSunDayColor = sundayColor ? sundayColor : DEFUALT_COLOR.SUNDAY;
 
     return (
       <div
@@ -222,6 +225,7 @@ let MonthView = React.createClass({
           <a
             href='#'
             onClick={e => this.handleHeadingClick(date, drilldownView, e)}
+            style={{color:isSunDay?selectSunDayColor:''}}
           >
             {label}
           </a>

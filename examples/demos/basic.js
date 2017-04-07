@@ -13,6 +13,7 @@ class Basic extends React.Component {
         events={events}
         defaultDate={new Date(2015, 3, 1)}
         headDateClick={this.headDateClick.bind(this)}
+        sundayColor={'#e80000'}
       />
     )
   }
