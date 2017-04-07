@@ -1,5 +1,5 @@
 import React from 'react';
-import BigCalendar from 'react-big-calendar';
+import BigCalendar from '../../src';
 import events from '../events';
 
 let Selectable = React.createClass({

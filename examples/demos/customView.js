@@ -1,7 +1,7 @@
 import React from 'react';
 
 import events from '../events';
-import BigCalendar from 'react-big-calendar';
+import BigCalendar from '../../src';
 import Week from 'react-big-calendar/lib/Week';
 import dates from 'react-big-calendar/lib/utils/dates';
 import localizer from 'react-big-calendar/lib/localizer';

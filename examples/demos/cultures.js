@@ -1,5 +1,5 @@
 import React from 'react';
-import BigCalendar from 'react-big-calendar';
+import BigCalendar from '../../src';
 import events from '../events';
 
 require('globalize/lib/cultures/globalize.culture.en-GB');
