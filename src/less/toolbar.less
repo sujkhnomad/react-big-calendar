@@ -6,13 +6,26 @@
 .rbc-toolbar {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
   font-size: 16px;
+  position: relative;
 
   .rbc-toolbar-label {
     width: 100%;
     padding: 0 10px;
     text-align: center;
+  }
+  .rbc-btn-group-custom{
+    position: absolute;
+    right: 0;
+  }
+// 임시 arrow 입니다.
+  .btn-next:before{
+    content:'>';
+  }
+  .btn-prev:after{
+    content:'<';
   }
 
   & button {
@@ -23,11 +36,18 @@
     vertical-align: middle;
     background: none;
     background-image: none;
-    border: 1px solid @btn-border;
+    // border: 1px solid @btn-border;
+    border: 0;
     padding: .375rem 1rem;
     border-radius: 4px;
     line-height: normal;
     white-space: nowrap;
+
+    & .btn-text{
+      text-indent: -999em;
+      display: inline-block;
+    }
+
 
     &:active,
     &.rbc-active {
