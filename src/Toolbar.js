@@ -52,14 +52,18 @@ class Toolbar extends React.Component {
         <span className='rbc-btn-group-custom'>
           <button
             type='button'
+            className='today'
             onClick={this.navigate.bind(null, navigate.TODAY)}
           >
             {messages.today}
           </button>
-
-        {
-          this.viewNamesGroup(messages)
-        }
+          <div className='dateCate'>
+            <div className='dateCatelist'>
+            {
+              this.viewNamesGroup(messages)
+            }
+            </div>
+          </div>
         </span>
       </div>
     );
@@ -80,7 +84,8 @@ class Toolbar extends React.Component {
     if (viewNames.length > 1) {
       return (
         viewNames.map(name =>
-          <button type='button' key={name}
+          <button key={name}
+            type='button'
             className={cn({'rbc-active': view === name})}
             onClick={this.view.bind(null, name)}
           >

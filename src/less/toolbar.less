@@ -12,8 +12,8 @@
   position: relative;
 
   .rbc-toolbar-label {
-    width: 100%;
     // padding: 0 10px;
+    width: 100%;
     text-align: center;
     font-size: 18px;
     line-height: 22px;
@@ -23,9 +23,12 @@
   }
   .rbc-btn-group-custom{
     position: absolute;
-    right: 0;
+    top: 0;
+    right: 7px;
   }
-// 임시 arrow 입니다.
+
+////////////////// custom style 시작.
+
   .btn-next{
     background: url('../images/btn_paging_next.png') no-repeat center;
     background-size: auto 13px;
@@ -50,19 +53,54 @@
     }
   }
 
+  .today{
+    display: inline-block;
+    vertical-align: middle;
+    height: 22px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    font-size: 13px;
+    background-color: transparent;
+    color: #00bbd4;
+    text-decoration: underline;
+  }
+  .dateCate{
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    padding: 0 8px;
+    background: url('../images/bg_list.png') 50% 50% /auto 12px no-repeat;;
+
+  }
+  .dateCatelist{
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+
+    button{
+      width: 100%;
+
+    }
+  }
+////////////////// custom style 끝.
   & button {
     // color: @btn-color;
+    // background: none;
+    // background-image: none;
+    // border: 1px solid @btn-border;
+    // padding: .375rem 1rem;
+    // border-radius: 4px;
     display: inline-block;
     margin: 0;
     text-align: center;
     vertical-align: middle;
-    // background: none;
-    // background-image: none;
-    // border: 1px solid @btn-border;
     border: 0;
-    // padding: .375rem 1rem;
     padding: 0;
-    // border-radius: 4px;
     line-height: normal;
     white-space: nowrap;
 
