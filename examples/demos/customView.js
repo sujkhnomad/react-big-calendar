@@ -2,10 +2,10 @@ import React from 'react';
 
 import events from '../events';
 import BigCalendar from '../../src';
-import Week from 'react-big-calendar/lib/Week';
-import dates from 'react-big-calendar/lib/utils/dates';
-import localizer from 'react-big-calendar/lib/localizer';
-import TimeGrid from 'react-big-calendar/lib/TimeGrid';
+import Week from '../../src/Week';
+import dates from '../../src/utils/dates';
+import localizer from '../../src/localizer';
+import TimeGrid from '../../src/TimeGrid';
 
 class MyWeek extends Week {
   render() {
