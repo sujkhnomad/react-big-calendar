@@ -11,7 +11,7 @@ let dateRangeFormat = ({ start, end }, culture, local)=>
 
 let timeRangeFormat = ({ start, end }, culture, local)=>
   local.format(start, 'h:mm', culture) +
-    ' — ' + local.format(end, inSame12Hr(start, end) ? 'h:mm' : 'h:mm', culture)
+    ' — ' + local.format(end, inSame12Hr(start, end) ? 'HH:mm' : 'HH:mm', culture)
 
 let weekRangeFormat = ({ start, end }, culture, local)=>
   local.format(start, 'MM[.]DD', culture) +
@@ -26,7 +26,7 @@ let formats = {
   selectRangeFormat: timeRangeFormat,
   eventTimeRangeFormat: timeRangeFormat,
 
-  timeGutterFormat: 'h:mm',
+  timeGutterFormat: 'HH:mm',
 
   monthHeaderFormat: 'YYYY[.] MM',
   dayHeaderFormat: 'YYYY[.]MM[.]DD',
@@ -34,7 +34,7 @@ let formats = {
   agendaHeaderFormat: dateRangeFormat,
 
   agendaDateFormat: 'YYYY[.]MM[.]DD',
-  agendaTimeFormat: 'hh:mm',
+  agendaTimeFormat: 'HH:mm',
   agendaTimeRangeFormat: timeRangeFormat
 }
 

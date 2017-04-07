@@ -13,10 +13,11 @@ class Toolbar extends React.Component {
     messages: React.PropTypes.object,
     onNavigate: React.PropTypes.func.isRequired,
     onViewChange: React.PropTypes.func.isRequired,
+    headDateClick: React.PropTypes.func
   }
 
   render() {
-    let { messages, label } = this.props;
+    let { messages, label, view, headDateClick } = this.props;
 
     messages = message(messages)
 
@@ -33,7 +34,13 @@ class Toolbar extends React.Component {
             </span>
           </button>
 
-          <span className='rbc-toolbar-label'>
+          <span className='rbc-toolbar-label'
+            onClick={()=>{
+              if(headDateClick){
+                headDateClick(view)
+              }
+            }}
+          >
             { label }
           </span>
 

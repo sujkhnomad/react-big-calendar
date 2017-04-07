@@ -7,11 +7,14 @@ require('globalize/lib/cultures/globalize.culture.es');
 require('globalize/lib/cultures/globalize.culture.fr');
 require('globalize/lib/cultures/globalize.culture.ar-AE');
 
-let Cultures = React.createClass({
+class Cultures extends React.Component{
+  headDateClick(viewType){
+    console.log ('headDateClick now view type : ', viewType);
+  }
 
   getInitialState(){
     return { culture: 'fr' }
-  },
+  }
 
   render(){
     let cultures = ['en', 'en-GB', 'es', 'fr', 'ar-AE']
@@ -40,10 +43,12 @@ let Cultures = React.createClass({
           events={events}
           culture={this.state.culture}
           defaultDate={new Date(2015, 3, 1)}
+          headDateClick={this.headDateClick.bind(this)}
         />
       </div>
     )
   }
-})
+}
+
 
 export default Cultures;
