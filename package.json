@@ -32,7 +32,7 @@
     "build": "npm run clean && babel src --out-dir lib && npm run assets && npm run less && npm run less",
     "build:examples": "npm run clean:examples && webpack --config webpack/examples.config.js",
     "build:visual-test": "webpack --config webpack/visual-test.js",
-    "examples": "npm run clean:examples && webpack-dev-server --inline --hot --config webpack/examples.config.js",
+    "start": "npm run clean:examples && webpack-dev-server --inline --hot --config webpack/examples.config.js",
     "lint": "eslint src --ext .jsx --ext .js",
     "storybook": "start-storybook -p 9002",
     "test": "npm run lint",
