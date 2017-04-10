@@ -17,8 +17,8 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    let { messages, label, view, headDateClick } = this.props;
-
+    let { messages, label, view, headDateClick, date } = this.props;
+    console.log(this.props,'asdfa')
     messages = message(messages)
 
     return (
@@ -37,7 +37,11 @@ class Toolbar extends React.Component {
           <span className='rbc-toolbar-label'
             onClick={()=>{
               if(headDateClick){
-                headDateClick(view)
+                headDateClick(
+                  {
+                    view, date, label
+                  }
+                )
               }
             }}
           >
