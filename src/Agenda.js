@@ -68,6 +68,7 @@ let Agenda = React.createClass({
           <ul ref='tbody' className="calendar-list" >
             { range.map((day, idx) => this.renderDay(day, events, idx)) }
           </ul>
+          <a href="#" className="btn-write">추가</a>
         </div>
       </div>
     );
@@ -118,11 +119,17 @@ let Agenda = React.createClass({
                   </th>
                   <td>
                     <div className="text-box">
+
+                      {/*타입별 태그가 들어갈 곳*/}
                       <em className="rbc-tag">학습알림</em>
+                      {/*타입별 태그가 들어갈 곳*/}
+
+                      <strong>
                           { EventComponent
                               ? <EventComponent event={event} title={title}/>
                               : title
                           }
+                      </strong>
                     </div>
                   </td>
               </tr>

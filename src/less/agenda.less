@@ -26,7 +26,11 @@
     color: #fff;
 }
 
-
+.calendar .schedule-list{
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
 .calendar .schedule-list table th {
     width: 20%;
     height: 73px;
@@ -35,6 +39,7 @@
     line-height: 24px;
     color: #212121;
     text-align: center;
+    background: #fff;
 }
 .calendar .schedule-list table .text-box {
     padding-left: 15px;
@@ -43,15 +48,30 @@
 .calendar .schedule-list td {
     background: #fff;
     border-radius: 3px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 .calendar .schedule-list:first-child {
     margin-top: 0;
 }
 .calendar .schedule-list {
     margin-top: 5px;
+}
+
+.calendar .schedule-list table .text-box .rbc-tag {
+    height: 18px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    line-height: 18px;
+}
+.calendar .schedule-list strong {
+    display: block;
+    overflow: hidden;
+    width: calc(100% - 20px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #212121;
 }
 //**************** 커스텀 스타일 끝
 

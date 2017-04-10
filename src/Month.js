@@ -151,7 +151,7 @@ let MonthView = React.createClass({
               this._renderOverlay()
           }
         </div>
-
+        <a href="#" className="btn-write">추가</a>
       </div>
     )
   },

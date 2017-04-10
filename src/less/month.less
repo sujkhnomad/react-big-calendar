@@ -1,5 +1,30 @@
 @import './variables.less';
+.rbc-tag{
+      height: 18px;
+      margin-bottom: 2px;
+      font-size: 9px;
+      line-height: 18px;
+      padding: 0 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 11px;
+      box-sizing: border-box;
+      vertical-align: middle;
+      display: inline-block
+  }
 
+a.btn-write, button.btn-write {
+    // overflow: scroll;
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    width: 63px;
+    height: 63px;
+    background: url(../images/btn_write.png) 0 0 no-repeat;
+    background-size: 63px 63px;
+    font-size: 0;
+    line-height: 0;
+    -webkit-overflow-scrolling: touch;
+}
 
 .rbc-row {
   display: flex;
@@ -27,18 +52,7 @@
     white-space:normal;
   
   
-  .rbc-tag{
-      height: 18px;
-      margin-bottom: 2px;
-      font-size: 9px;
-      line-height: 18px;
-      padding: 0 10px;
-      border: 1px solid #e0e0e0;
-      border-radius: 11px;
-      box-sizing: border-box;
-      vertical-align: middle;
-      display: inline-block
-  }
+  
   .rbc-tag.kor {
       border-width: 0;
       background: #4385ff;
