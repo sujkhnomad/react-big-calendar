@@ -34,9 +34,11 @@ class Toolbar extends React.Component {
     })
   }
   onblur(){
-    this.setState({
-      isSelect : !this.state.isSelect
-    })
+    if(this.state.isSelect){
+      this.setState({
+        isSelect : false
+      })
+    }
   }
   render() {
     let { messages, label, view, headDateClick, date, headPrevButtonClick, headNextButtonClick } = this.props;
