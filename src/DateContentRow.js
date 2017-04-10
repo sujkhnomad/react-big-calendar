@@ -3,6 +3,7 @@ import getHeight from 'dom-helpers/query/height';
 import qsa from 'dom-helpers/query/querySelectorAll';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import moment from 'moment';
 
 import dates from './utils/dates';
 import { accessor, elementType } from './utils/propTypes';
@@ -148,6 +149,7 @@ class DateContentRow extends React.Component {
       eventWrapperComponent,
       onSelectStart,
       onSelectEnd,
+      currentDate,
       ...props
     } = this.props;
 
@@ -183,20 +185,32 @@ class DateContentRow extends React.Component {
               {range.map(this.renderHeadingCell)}
             </div>
           )}
-          {levels.map((segs, idx) =>
-            <EventRow
-              {...props}
-              key={idx}
-              start={first}
-              end={last}
-              segments={segs}
-              slots={range.length}
-              eventComponent={eventComponent}
-              eventWrapperComponent={eventWrapperComponent}
-              startAccessor={startAccessor}
-              endAccessor={endAccessor}
-            />
-          )}
+          {levels.map((segs, idx) => {
+            let isInMonth = moment(range[idx]).isBetween(currentDate, moment(currentDate).add(1, 'month'), null, '[)');
+
+            if(isInMonth){
+              return(
+                <EventRow
+                  {...props}
+                  key={idx}
+                  start={first}
+                  end={last}
+                  segments={segs}
+                  slots={range.length}
+                  eventComponent={eventComponent}
+                  eventWrapperComponent={eventWrapperComponent}
+                  startAccessor={startAccessor}
+                  endAccessor={endAccessor}
+                />
+              );
+            }
+            else{
+              return(
+                <div key={idx}></div>
+              )
+            }
+
+          })}
           {!!extra.length && (
             <EventEndingRow
               {...props}

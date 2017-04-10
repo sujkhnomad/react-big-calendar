@@ -1,6 +1,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import cn from 'classnames';
+import moment from 'moment';
 
 import dates from './utils/dates';
 import localizer from './localizer'
@@ -165,6 +166,7 @@ let MonthView = React.createClass({
       allDayAccessor,
       eventPropGetter,
       messages,
+      date: currentDate,
       selected } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
@@ -203,6 +205,8 @@ let MonthView = React.createClass({
         eventComponent={components.event}
         eventWrapperComponent={components.eventWrapper}
         dateCellWrapper={components.dateCellWrapper}
+
+        currentDate={currentDate}
       />
     )
   },
@@ -214,7 +218,10 @@ let MonthView = React.createClass({
     let drilldownView = getDrilldownView(date);
     let label = localizer.format(date, dateFormat, culture);
     let isSunDay = date.getDay() === 0;
+    //일요일 라벨 색상
     let selectSunDayColor = sundayColor ? sundayColor : DEFUALT_COLOR.SUNDAY;
+    //같은 달 체크
+    let isInMonth = moment(date).isBetween(currentDate, moment(currentDate).add(1, 'month'), null, '[)');
 
     return (
       <div
@@ -231,11 +238,11 @@ let MonthView = React.createClass({
             onClick={e => this.handleHeadingClick(date, drilldownView, e)}
             style={{color:isSunDay?selectSunDayColor:''}}
           >
-            {label}
+            {isInMonth && label}
           </a>
         ) : (
           <span>
-            {label}
+            {isInMonth && label}
           </span>
         )}
       </div>
