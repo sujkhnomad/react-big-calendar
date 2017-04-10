@@ -47,10 +47,10 @@ class CustomComponent extends Component {
 export default [
   {
     'no':11112222,
-    // 'title': 'All Day',
-    // 'allDay': true,
+    'title': 'All Day',
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
     'planEditors':['교사', '관리자']
