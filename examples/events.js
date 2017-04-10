@@ -48,12 +48,15 @@ export default [
   {
     'no':11112222,
     'title': 'All Day',
+    'content':'한글 선생님과 공부하기',
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
-    'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
+    'CustomComponent':<CustomComponent labelArr={['국어']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
-    'planEditors':['교사', '관리자']
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':1
   },
   {
     'no':11112223,
