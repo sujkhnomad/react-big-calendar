@@ -25,9 +25,15 @@ class Toolbar extends React.Component {
       isSelect : false
     }
     this.toggleClass = this.toggleClass.bind(this);
+    this.onblur = this.onblur.bind(this);
   }
 
   toggleClass(){
+    this.setState({
+      isSelect : !this.state.isSelect
+    })
+  }
+  onblur(){
     this.setState({
       isSelect : !this.state.isSelect
     })
@@ -99,7 +105,7 @@ class Toolbar extends React.Component {
           </button>
           <button className={toggle}
             onClick={this.toggleClass}
-            onBlur={this.toggleClass}
+            onBlur={this.onblur}
             >
 
             <ul className='dateCatelist'>
