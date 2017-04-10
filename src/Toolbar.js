@@ -32,7 +32,6 @@ class Toolbar extends React.Component {
       isSelect : !this.state.isSelect
     })
   }
-
   render() {
     let { messages, label, view, headDateClick, date, headPrevButtonClick, headNextButtonClick } = this.props;
     let openClass = this.state.isSelect ? 'on' : ''
@@ -98,14 +97,17 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button>
-          <div className={toggle}
-            onClick={this.toggleClass}>
-            <div className='dateCatelist'>
+          <button className={toggle}
+            onClick={this.toggleClass}
+            onBlur={this.toggleClass}
+            >
+
+            <ul className='dateCatelist'>
             {
               this.viewNamesGroup(messages)
             }
-            </div>
-          </div>
+            </ul>
+          </button>
         </span>
       </div>
     );
@@ -126,13 +128,13 @@ class Toolbar extends React.Component {
     if (viewNames.length > 1) {
       return (
         viewNames.map(name =>
-          <button key={name}
+          <li key={name}
             type='button'
             className={cn({'rbc-active': view === name})}
             onClick={this.view.bind(null, name)}
           >
             {messages[name]}
-          </button>
+          </li>
         )
       )
     }
