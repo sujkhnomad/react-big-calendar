@@ -30,7 +30,7 @@ class Basic extends React.Component {
         headDateClick={this.headDateClick.bind(this)}
         headPrevButtonClick={this.headPrevButtonClick.bind(this)}
         headNextButtonClick={this.headNextButtonClick.bind(this)}
-        sundayColor={'#e80000'}
+        sundayColor={'#bdbdbd'}
       />
     )
   }
