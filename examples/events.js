@@ -47,7 +47,7 @@ class CustomComponent extends Component {
 export default [
   {
     'no':11112222,
-    'title': 'All Day',
+    'title': '국어 선생님과 수업일',
     'content':'한글 선생님과 공부하기',
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
