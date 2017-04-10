@@ -15,9 +15,25 @@ class Toolbar extends React.Component {
     onViewChange: React.PropTypes.func.isRequired,
     headDateClick: React.PropTypes.func
   }
+  constructor(){
+    super();
+
+    this.state ={
+      isSelect : false
+    }
+    this.toggleClass = this.toggleClass.bind(this);
+  }
+
+  toggleClass(){
+    this.setState({
+      isSelect : !this.state.isSelect
+    })
+  }
 
   render() {
     let { messages, label, view, headDateClick } = this.props;
+    let openClass = this.state.isSelect ? 'on' : ''
+    let toggle = `dateCate ${openClass}`
 
     messages = message(messages)
 
@@ -47,8 +63,7 @@ class Toolbar extends React.Component {
           <button
             type='button'
             className='btn-next'
-            onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
+            onClick={this.navigate.bind(null, navigate.NEXT)}>
             <span className='btn-text'>
                 {messages.next}
             </span>
@@ -64,7 +79,8 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button>
-          <div className='dateCate'>
+          <div className={toggle}
+            onClick={this.toggleClass}>
             <div className='dateCatelist'>
             {
               this.viewNamesGroup(messages)

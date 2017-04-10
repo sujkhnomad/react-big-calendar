@@ -136,16 +136,20 @@ let MonthView = React.createClass({
     this._weekCount = weeks.length;
 
     return (
-      <div className={cn('rbc-month-view', className)}>
+      <div className='wrap'>
         <div className='rbc-row rbc-month-header'>
-          {this._headers(weeks[0], weekdayFormat, culture)}
+            {this._headers(weeks[0], weekdayFormat, culture)}
         </div>
-        { weeks.map((week, idx) =>
-            this.renderWeek(week, idx))
-        }
-        { this.props.popup &&
-            this._renderOverlay()
-        }
+        <div className={cn('rbc-month-view', className)}>
+          
+          { weeks.map((week, idx) =>
+              this.renderWeek(week, idx))
+          }
+          { this.props.popup &&
+              this._renderOverlay()
+          }
+        </div>
+
       </div>
     )
   },

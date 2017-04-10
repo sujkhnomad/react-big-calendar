@@ -4,26 +4,37 @@
 @active-border: darken(@btn-border, 12%);
 
 .rbc-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // margin-bottom: 10px;
+  text-align: center;
+  background-color: #fff;
+  padding:16px 0 8px;
   font-size: 16px;
   position: relative;
+
+  &:after{
+    content:'';
+    display: block;
+    clear: both;
+    overflow: hidden;
+  }
+
 
   .rbc-toolbar-label {
     // padding: 0 10px;
     width: 100%;
     text-align: center;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 21px;
     color: #212121;
     vertical-align: middle;
     margin: 0 20px;
   }
   .rbc-btn-group-custom{
     position: absolute;
-    top: 0;
+    top: 16px;
     right: 7px;
   }
 
@@ -57,7 +68,7 @@
     display: inline-block;
     vertical-align: middle;
     height: 22px;
-    padding: 0 8px;
+    padding: 0 14px;
     box-sizing: border-box;
     font-size: 13px;
     background-color: transparent;
@@ -70,20 +81,36 @@
     width: 30px;
     height: 22px;
     padding: 0 8px;
-    background: url('../images/bg_list.png') 50% 50% /auto 12px no-repeat;;
+    vertical-align: middle;
+    background: url('../images/bg_list.png') 50% 50% /auto 12px no-repeat;
+
+
+    .dateCatelist{
+      display: block;
+    }
+    &.on{
+      .dateCatelist{
+        display: none;
+      }
+    }
 
   }
   .dateCatelist{
     position: absolute;
     z-index: 999;
     top: 100%;
-    left: 0;
+    right: 7px;
     list-style: none;
     padding: 0;
     margin: 10px 0;
 
     button{
       width: 100%;
+      padding: 10px;
+
+      & + & {
+        margin-top: 10px;
+      }
 
     }
   }
@@ -103,6 +130,7 @@
     padding: 0;
     line-height: normal;
     white-space: nowrap;
+    outline: none;
 
     & .btn-text{
       text-indent: -999em;
