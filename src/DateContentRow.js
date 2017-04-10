@@ -39,6 +39,7 @@ const propTypes = {
   eventWrapperComponent: elementType.isRequired,
   minRows: React.PropTypes.number.isRequired,
   maxRows: React.PropTypes.number.isRequired,
+  nowMonth: React.PropTypes.object
 };
 
 const defaultProps = {
@@ -149,7 +150,7 @@ class DateContentRow extends React.Component {
       eventWrapperComponent,
       onSelectStart,
       onSelectEnd,
-      currentDate,
+      nowMonth,
       ...props
     } = this.props;
 
@@ -186,7 +187,7 @@ class DateContentRow extends React.Component {
             </div>
           )}
           {levels.map((segs, idx) => {
-            let isInMonth = moment(range[idx]).isBetween(currentDate, moment(currentDate).add(1, 'month'), null, '[)');
+            let isInMonth = moment(range[idx]).isBetween(nowMonth, moment(nowMonth).add(1, 'month'), null, '[)');
 
             if(isInMonth){
               return(

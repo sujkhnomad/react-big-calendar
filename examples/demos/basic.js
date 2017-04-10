@@ -26,7 +26,7 @@ class Basic extends React.Component {
       <BigCalendar
         {...this.props}
         events={events}
-        defaultDate={new Date(2015, 3, 1)}
+        defaultDate={new Date(2015, 2, 27)}
         headDateClick={this.headDateClick.bind(this)}
         headPrevButtonClick={this.headPrevButtonClick.bind(this)}
         headNextButtonClick={this.headNextButtonClick.bind(this)}

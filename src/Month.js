@@ -73,7 +73,8 @@ let propTypes = {
       y: React.PropTypes.number
     })
   ]),
-  sundayColor: React.PropTypes.string
+  sundayColor: React.PropTypes.string,
+  nowMonth:React.PropTypes.object
 };
 
 let MonthView = React.createClass({
@@ -142,7 +143,7 @@ let MonthView = React.createClass({
             {this._headers(weeks[0], weekdayFormat, culture)}
         </div>
         <div className={cn('rbc-month-view', className)}>
-          
+
           { weeks.map((week, idx) =>
               this.renderWeek(week, idx))
           }
@@ -212,7 +213,7 @@ let MonthView = React.createClass({
   },
 
   readerDateHeading({ date, className, ...props }) {
-    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor  } = this.props;
+    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor, nowMonth  } = this.props;
     let isOffRange = dates.month(date) !== dates.month(currentDate);
     let isCurrent = dates.eq(date, currentDate, 'day');
     let drilldownView = getDrilldownView(date);
@@ -221,7 +222,7 @@ let MonthView = React.createClass({
     //일요일 라벨 색상
     let selectSunDayColor = sundayColor ? sundayColor : DEFUALT_COLOR.SUNDAY;
     //같은 달 체크
-    let isInMonth = moment(date).isBetween(currentDate, moment(currentDate).add(1, 'month'), null, '[)');
+    let isInMonth = moment(date).isBetween(nowMonth, moment(nowMonth).add(1, 'month'), null, '[)');
 
     return (
       <div

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import uncontrollable from 'uncontrollable';
 import cn from 'classnames';
+import moment from 'moment';
 import {
     accessor
   , elementType
@@ -518,7 +519,7 @@ let Calendar = React.createClass({
     )
 
     let ToolbarToRender = components.toolbar || Toolbar
-
+    let nowMonth = moment(`${moment(current).format('YYYY-MM')}-01`).toDate()
     return (
       <div
         {...elementProps}
@@ -556,6 +557,7 @@ let Calendar = React.createClass({
           onSelectEvent={this.handleSelectEvent}
           onSelectSlot={this.handleSelectSlot}
           onShowMore={this._showMore}
+          nowMonth={nowMonth}
         />
       </div>
     );
