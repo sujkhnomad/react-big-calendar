@@ -41,13 +41,13 @@ let Agenda = React.createClass({
     };
   },
 
-  componentDidMount() {
-    this._adjustHeader()
-  },
+  // componentDidMount() {
+  //   this._adjustHeader()
+  // },
 
-  componentDidUpdate() {
-    this._adjustHeader()
-  },
+  // componentDidUpdate() {
+  //   this._adjustHeader()
+  // },
 
   render() {
     let { length, date, events, startAccessor } = this.props;
@@ -63,28 +63,11 @@ let Agenda = React.createClass({
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
     return (
-      <div className='rbc-agenda-view'>
-        <table ref='header'>
-          <thead>
-            <tr>
-              <th className='rbc-header' ref='dateCol'>
-                {messages.date}
-              </th>
-              <th className='rbc-header' ref='timeCol'>
-                {messages.time}
-              </th>
-              <th className='rbc-header'>
-                {messages.event}
-              </th>
-            </tr>
-          </thead>
-        </table>
+      <div className='rbc-agenda-view calendar'>
         <div className='rbc-agenda-content' ref='content'>
-          <table>
-            <tbody ref='tbody'>
-              { range.map((day, idx) => this.renderDay(day, events, idx)) }
-            </tbody>
-          </table>
+          <ul ref='tbody' className="calendar-list" >
+            { range.map((day, idx) => this.renderDay(day, events, idx)) }
+          </ul>
         </div>
       </div>
     );
@@ -104,20 +87,48 @@ let Agenda = React.createClass({
       let dateLabel = idx === 0 && localizer.format(day, agendaDateFormat, culture)
       let first = idx === 0
           ? (
-            <td rowSpan={events.length} className='rbc-agenda-date-cell'>
+            <h2 rowSpan={events.length} className='rbc-agenda-date-cell'>
               { DateComponent
                 ? <DateComponent day={day} label={dateLabel}/>
                 : dateLabel
               }
-            </td>
+            </h2>
           ) : false
 
       let title = get(event, titleAccessor)
 
       return (
-        <tr key={dayKey + '_' + idx}>
+        <li key={dayKey + '_' + idx} className="schedule-list">
           {first}
-          <td className='rbc-agenda-time-cell'>
+          <table>
+            <caption>시간별(으)로 구성된 일정 테이블</caption>
+            <colgroup>
+                <col width="20%"/>
+                <col width="*"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                {/*이곳에 타입에따른 스타일적용*/}
+                  <th className="math color">
+                {/*이곳에 타입에따른 스타일적용*/}
+                    <div className="time">
+                      <small>오후</small>
+                      { this.timeRangeLabel(day, event) }
+                    </div>
+                  </th>
+                  <td>
+                    <div className="text-box">
+                      <em className="rbc-tag">학습알림</em>
+                          { EventComponent
+                              ? <EventComponent event={event} title={title}/>
+                              : title
+                          }
+                    </div>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+          {/*<td className='rbc-agenda-time-cell'>
             { this.timeRangeLabel(day, event) }
           </td>
           <td className='rbc-agenda-event-cell'>
@@ -125,8 +136,8 @@ let Agenda = React.createClass({
                 ? <EventComponent event={event} title={title}/>
                 : title
             }
-          </td>
-        </tr>
+          </td>*/}
+        </li>
       )
     }, [])
   },
@@ -168,34 +179,34 @@ let Agenda = React.createClass({
     )
   },
 
-  _adjustHeader() {
-    let header = this.refs.header;
-    let firstRow = this.refs.tbody.firstChild
+  // _adjustHeader() {
+  //   let header = this.refs.header;
+  //   let firstRow = this.refs.tbody.firstChild
 
-    if (!firstRow)
-      return
+  //   if (!firstRow)
+  //     return
 
-    let isOverflowing = this.refs.content.scrollHeight > this.refs.content.clientHeight;
-    let widths = this._widths || []
+  //   let isOverflowing = this.refs.content.scrollHeight > this.refs.content.clientHeight;
+  //   let widths = this._widths || []
 
-    this._widths = [
-      getWidth(firstRow.children[0]),
-      getWidth(firstRow.children[1])
-    ]
+  //   this._widths = [
+  //     getWidth(firstRow.children[0]),
+  //     getWidth(firstRow.children[1])
+  //   ]
 
-    if (widths[0] !== this._widths[0] || widths[1] !== this._widths[1]) {
-      this.refs.dateCol.style.width = this._widths[0] + 'px'
-      this.refs.timeCol.style.width = this._widths[1] + 'px';
-    }
+  //   if (widths[0] !== this._widths[0] || widths[1] !== this._widths[1]) {
+  //     this.refs.dateCol.style.width = this._widths[0] + 'px'
+  //     this.refs.timeCol.style.width = this._widths[1] + 'px';
+  //   }
 
-    if (isOverflowing) {
-      classes.addClass(header, 'rbc-header-overflowing')
-      header.style.marginRight = scrollbarSize() + 'px'
-    }
-    else {
-      classes.removeClass(header, 'rbc-header-overflowing')
-    }
-  }
+  //   if (isOverflowing) {
+  //     classes.addClass(header, 'rbc-header-overflowing')
+  //     header.style.marginRight = scrollbarSize() + 'px'
+  //   }
+  //   else {
+  //     classes.removeClass(header, 'rbc-header-overflowing')
+  //   }
+  // }
 });
 
 Agenda.navigate = (date, action)=>{

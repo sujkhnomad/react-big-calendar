@@ -1,4 +1,60 @@
 
+
+.calendar .calendar-list > li h2 {
+    padding: 0 16px;
+    font-family: 'NanumBarunGothic-Light';
+    font-size: 15px;
+    line-height: 50px;
+    color: #212121;
+}
+.calendar .schedule-list {
+    margin: 0 5px;
+    border-radius: 3px;
+}
+.schedule-list .time small{
+    display: block;
+    font-size: 9px;
+    line-height: 20px;
+}
+
+.calendar .schedule-list table th.math {
+    background: #1ad49d;
+    border-radius: 3px 0 0 3px;
+}
+.calendar .schedule-list table th.color {
+    border-right: none;
+    color: #fff;
+}
+
+
+.calendar .schedule-list table th {
+    width: 20%;
+    height: 73px;
+    border-right: 1px solid #dcdcdc;
+    font-size: 20px;
+    line-height: 24px;
+    color: #212121;
+    text-align: center;
+}
+.calendar .schedule-list table .text-box {
+    padding-left: 15px;
+}
+
+.calendar .schedule-list td {
+    background: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+.calendar .schedule-list:first-child {
+    margin-top: 0;
+}
+.calendar .schedule-list {
+    margin-top: 5px;
+}
+//**************** 커스텀 스타일 끝
+
 .rbc-agenda-view {
   display: flex;
   flex-direction: column;
@@ -7,11 +63,11 @@
 
   table {
     width: 100%;
-    border: 1px solid @cell-border;
+    // border: 1px solid @cell-border;
 
     tbody > tr > td {
-      padding: 5px 10px;
-      vertical-align: top;
+      // padding: 5px 10px;
+      // vertical-align: top;
 
     }
 
