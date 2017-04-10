@@ -17,13 +17,13 @@ class CustomComponent extends Component {
         return 'math';
       case '국어':
         return 'kor';
-        break;
+      default :
+        return ''
     }
-    return type;
   }
   render() {
     let {labelArr} = this.props
-    
+
     return (
       <div style={{color:'black'}} className='rbc-event-content-custom'>
         {labelArr.map((item, index)=>{
@@ -31,9 +31,9 @@ class CustomComponent extends Component {
           let tag = `rbc-tag ${this.cssSelector(item)}`
 
           return(
-            <em 
-            key={index} 
-            className={tag}
+            <em
+              key={index}
+              className={tag}
             >
               {item}
             </em>
@@ -51,7 +51,7 @@ export default [
     // 'allDay': true,
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
-    'CustomComponent':<CustomComponent labelArr={['영어', '국어', '수학']}/>,
+    'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
     'planEditors':['교사', '관리자']
   },
@@ -59,7 +59,8 @@ export default [
     'no':11112223,
     'title': 'Long Event',
     'start': new Date(2015, 3, 7),
-    'end': new Date(2015, 3, 10)
+    'end': new Date(2015, 3, 10),
+    'CustomComponent':<CustomComponent labelArr={['수학']}/>,
   },
 
   {
