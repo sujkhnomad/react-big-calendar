@@ -16,7 +16,9 @@ let Selectable = React.createClass({
           defaultView='week'
           scrollToTime={new Date(1970, 1, 1, 6)}
           defaultDate={new Date(2015, 3, 12)}
-          onSelectEvent={event => alert(event.title)}
+          onSelectEvent={(event) => {
+            console.log(event);
+          }}
           onSelectSlot={(slotInfo) => alert(
             `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
             `\nend: ${slotInfo.end.toLocaleString()}`
