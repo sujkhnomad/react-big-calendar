@@ -99,7 +99,9 @@ class Toolbar extends React.Component {
           <button
             type='button'
             className='today'
-            onClick={this.navigate.bind(null, navigate.TODAY)}
+            onClick={()=>{
+              this.navigate(navigate.TODAY)
+            }}
           >
             {messages.today}
           </button>
