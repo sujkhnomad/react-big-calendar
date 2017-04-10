@@ -33,7 +33,8 @@ export default [
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
     'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
-    'notEdit':true
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자']
   },
   {
     'no':11112223,
