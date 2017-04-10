@@ -8,8 +8,10 @@ require('globalize/lib/cultures/globalize.culture.fr');
 require('globalize/lib/cultures/globalize.culture.ar-AE');
 
 class Cultures extends React.Component{
-  headDateClick(viewType){
-    console.log ('headDateClick now view type : ', viewType);
+  headDateClick({view, date, label}){
+    console.log ('view : ', view);
+    console.log ('date : ', date);
+    console.log ('label : ', label);
   }
 
   getInitialState(){

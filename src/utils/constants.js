@@ -16,5 +16,5 @@ export let views = {
 }
 
 export let DEFUALT_COLOR = {
-  SUNDAY:'#bdbdbd'
+  SUNDAY:'#bdbdbd',
 };

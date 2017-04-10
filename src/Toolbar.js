@@ -13,7 +13,10 @@ class Toolbar extends React.Component {
     messages: React.PropTypes.object,
     onNavigate: React.PropTypes.func.isRequired,
     onViewChange: React.PropTypes.func.isRequired,
-    headDateClick: React.PropTypes.func
+    headDateClick: React.PropTypes.func,
+    date: React.PropTypes.object,
+    headPrevButtonClick: React.PropTypes.func,
+    headNextButtonClick: React.PropTypes.func,
   }
   constructor(){
     super();
@@ -31,19 +34,25 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    let { messages, label, view, headDateClick } = this.props;
+    let { messages, label, view, headDateClick, date, headPrevButtonClick, headNextButtonClick } = this.props;
     let openClass = this.state.isSelect ? 'on' : ''
     let toggle = `dateCate ${openClass}`
-
     messages = message(messages)
-
+   
     return (
       <div className='rbc-toolbar'>
         <span className='rbc-btn-group'>
           <button
             type='button'
             className='btn-prev'
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+            onClick={()=>{
+              this.navigate(navigate.PREVIOUS);
+              if(headPrevButtonClick){
+                headPrevButtonClick({
+                    view, date, label
+                })
+              }
+            }}
           >
             <span className='btn-text'>
               {messages.previous}
@@ -53,7 +62,9 @@ class Toolbar extends React.Component {
           <span className='rbc-toolbar-label'
             onClick={()=>{
               if(headDateClick){
-                headDateClick(view)
+                headDateClick({
+                    view, date, label
+                })
               }
             }}
           >
@@ -63,7 +74,15 @@ class Toolbar extends React.Component {
           <button
             type='button'
             className='btn-next'
-            onClick={this.navigate.bind(null, navigate.NEXT)}>
+            onClick={()=>{
+              this.navigate(navigate.NEXT);
+              if(headNextButtonClick){
+                headNextButtonClick({
+                    view, date, label
+                })
+              }
+            }}
+          >
             <span className='btn-text'>
                 {messages.next}
             </span>
@@ -92,7 +111,7 @@ class Toolbar extends React.Component {
     );
   }
 
-  navigate = (action) => {
+  navigate(action){
     this.props.onNavigate(action)
   }
 
