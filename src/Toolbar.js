@@ -115,7 +115,7 @@ class Toolbar extends React.Component {
     this.props.onNavigate(action)
   }
 
-  view = (view) => {
+  view(view){
     this.props.onViewChange(view)
   }
 
@@ -129,7 +129,9 @@ class Toolbar extends React.Component {
           <button key={name}
             type='button'
             className={cn({'rbc-active': view === name})}
-            onClick={this.view.bind(null, name)}
+            onClick={()=>{
+              this.view(name)
+            }}
           >
             {messages[name]}
           </button>
