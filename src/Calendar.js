@@ -432,6 +432,8 @@ let Calendar = React.createClass({
       showMore: PropTypes.func
     }),
     headDateClick:React.PropTypes.func,
+    headPrevButtonClick:React.PropTypes.func,
+    headNextButtonClick:React.PropTypes.func,
     sundayColor:React.PropTypes.string
   },
 
@@ -535,6 +537,8 @@ let Calendar = React.createClass({
             onNavigate={this.handleNavigate}
             messages={this.props.messages}
             headDateClick={this.props.headDateClick}
+            headPrevButtonClick={this.props.headPrevButtonClick}
+            headNextButtonClick={this.props.headNextButtonClick}
           />
         }
         <View

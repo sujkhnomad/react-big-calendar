@@ -4,15 +4,22 @@ import events from '../events';
 
 class Basic extends React.Component {
   headDateClick({view, date, label}){
+    console.log('headDateClick');
     console.log ('view : ', view);
     console.log ('date : ', date);
     console.log ('label : ', label);
   }
-  headPrevButtonClick(){
-    console.log(' headPrevButtonClick click');
+  headPrevButtonClick({view, date, label}){
+    console.log('headDateClick');
+    console.log ('view : ', view);
+    console.log ('date : ', date);
+    console.log ('label : ', label);
   }
-  headNextButtonClick(){
-    console.log(' headPrevButtonClick click');
+  headNextButtonClick({view, date, label}){
+    console.log('headNextButtonClick');
+    console.log ('view : ', view);
+    console.log ('date : ', date);
+    console.log ('label : ', label);
   }
   render(){
     return (
