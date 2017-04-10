@@ -52,7 +52,7 @@ class EventCell extends React.Component {
         <div
           style={{...props.style, ...style}}
           className={cn('rbc-event', className, xClassName, {
-            'rbc-selected': selected,
+            //'rbc-selected': selected,
             'rbc-event-allday': isAllDay || dates.diff(start, dates.ceil(end, 'day'), 'day') > 1,
             'rbc-event-continues-prior': continuesPrior,
             'rbc-event-continues-after': continuesAfter
@@ -60,7 +60,7 @@ class EventCell extends React.Component {
           onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content' title={title}>
-            { Event
+            { CustomComponent ? <div></div> : Event
               ? <Event event={event} title={title}/>
               : title ? <p>{title}</p>:<div></div>
             }
