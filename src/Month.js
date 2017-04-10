@@ -167,7 +167,7 @@ let MonthView = React.createClass({
       allDayAccessor,
       eventPropGetter,
       messages,
-      date: currentDate,
+      nowMonth,
       selected } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
@@ -207,7 +207,7 @@ let MonthView = React.createClass({
         eventWrapperComponent={components.eventWrapper}
         dateCellWrapper={components.dateCellWrapper}
 
-        currentDate={currentDate}
+        nowMonth={nowMonth}
       />
     )
   },
