@@ -11,14 +11,54 @@
   padding: 0 1px 1px 1px;
 
   .rbc-event-content {
+
+    p{
     &:extend(.rbc-ellipsis);
+      font-size: 11px;
+      line-height: 15px;
+      color: #757575;
+    }
+  }
+}
+.rbc-event-content-custom{
+    display: inline-block;
+    overflow:visible;
+    text-overflow: clip;
+    white-space:normal;
+  
+  
+  .rbc-tag{
+      height: 18px;
+      margin-bottom: 2px;
+      font-size: 9px;
+      line-height: 18px;
+      padding: 0 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 11px;
+      box-sizing: border-box;
+      vertical-align: middle;
+      display: inline-block
+  }
+  .rbc-tag.kor {
+      border-width: 0;
+      background: #4385ff;
+      color: #fff;
+  }
+  .rbc-tag.math {
+      border-width: 0;
+      background: #1ad49d;
+      color: #fff;
+  }
+  .rbc-tag.eng {
+      border-width: 0;
+      background: #ffc200;
+      color: #fff;
   }
 }
 
 .rbc-selected-cell {
   background-color: @date-selection-bg-color;
 }
-
 
 .rbc-show-more {
   &:extend(.rbc-ellipsis);
@@ -32,8 +72,8 @@
 }
 
 .rbc-month-view {
-  position: relative;
   // border: 1px solid @calendar-border;
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
@@ -42,7 +82,6 @@
   webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
-  background: #fff;
 
   height: 100%; // ie-fix
 
@@ -72,16 +111,19 @@
 }
 
 .rbc-month-row {
+  background: #fff;
   display: flex;
   position: relative;
   flex-direction: column;
   flex: 1 0 0;
   overflow: hidden;
+  margin: 0 4px;
 
   height: 100%; // ie-fix
 
   & + & {
-    border-top: 1px solid @cell-border;
+    // border-top: 1px solid @cell-border;
+    border-top: 1px solid #dadada;
   }
 }
 

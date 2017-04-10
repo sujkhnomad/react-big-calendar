@@ -9,15 +9,34 @@ class CustomComponent extends Component {
   static propTypes = {
     labelArr: React.PropTypes.array
   }
+  cssSelector(type){
+    switch (type) {
+      case '영어':
+        return 'eng';
+      case '수학':
+        return 'math';
+      case '국어':
+        return 'kor';
+        break;
+    }
+    return type;
+  }
   render() {
     let {labelArr} = this.props
+    
     return (
-      <div style={{color:'black'}} className='rbc-event-content'>
+      <div style={{color:'black'}} className='rbc-event-content-custom'>
         {labelArr.map((item, index)=>{
+
+          let tag = `rbc-tag ${this.cssSelector(item)}`
+
           return(
-            <div key={index} style={{float:'left', marginRight:3}}>
+            <em 
+            key={index} 
+            className={tag}
+            >
               {item}
-            </div>
+            </em>
             );
         })}
       </div>
@@ -32,7 +51,7 @@ export default [
     // 'allDay': true,
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
-    'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
+    'CustomComponent':<CustomComponent labelArr={['영어', '국어', '수학']}/>,
     'dateStyleType': ''
   },
   {

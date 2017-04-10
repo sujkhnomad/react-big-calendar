@@ -62,7 +62,7 @@ class EventCell extends React.Component {
           <div className='rbc-event-content' title={title}>
             { Event
               ? <Event event={event} title={title}/>
-              : title
+              : <p>{title}</p>
             }
             {CustomComponent && React.cloneElement(CustomComponent)}
           </div>
