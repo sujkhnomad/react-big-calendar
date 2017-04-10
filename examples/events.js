@@ -51,6 +51,7 @@ export default [
     'content':'content 내용입니다.',
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
+    'allDay': true,
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     'CustomComponent':<CustomComponent labelArr={['국어']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.

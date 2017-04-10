@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import classes from 'dom-helpers/class';
 import getWidth from 'dom-helpers/query/width';
 import scrollbarSize from 'dom-helpers/util/scrollbarSize';
+import moment from 'moment';
 
 import localizer from './localizer'
 import message from './utils/messages';
@@ -126,7 +127,7 @@ let Agenda = React.createClass({
                   <th className="math color">
                 {/*이곳에 타입에따른 스타일적용*/}
                     <div className="time">
-                      <small>오후</small>
+                      <small>{moment(event.start).format('a')}</small>
                       { this.timeRangeLabel(day, event) }
                     </div>
                   </th>
