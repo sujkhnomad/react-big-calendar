@@ -74,11 +74,24 @@ let Agenda = React.createClass({
     );
   },
 
+  selectSummaryText(type){
+    switch (type) {
+      case 1:
+      case 2:
+      case 3:
+        return '학습알림'
+      case 5:
+        return '추천'
+      default:
+        return false
+    }
+  },
+
   renderDay(day, events, dayKey){
     let {
         culture, components
       , titleAccessor, agendaDateFormat } = this.props;
-
+    let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
 
@@ -97,7 +110,7 @@ let Agenda = React.createClass({
           ) : false
 
       let title = get(event, titleAccessor)
-
+      let planType = self.selectSummaryText(event.planType);
       return (
         <li key={dayKey + '_' + idx} className="schedule-list">
           {first}
@@ -121,7 +134,7 @@ let Agenda = React.createClass({
                     <div className="text-box">
 
                       {/*타입별 태그가 들어갈 곳*/}
-                      <em className="rbc-tag">학습알림</em>
+                      {planType && <em className="rbc-tag">{planType}</em>}
                       {/*타입별 태그가 들어갈 곳*/}
 
                       <strong>
@@ -130,6 +143,9 @@ let Agenda = React.createClass({
                               : title
                           }
                       </strong>
+                      {event.content && <div>
+                        {event.content}
+                        </div>}
                     </div>
                   </td>
               </tr>

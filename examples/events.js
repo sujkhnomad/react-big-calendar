@@ -48,7 +48,7 @@ export default [
   {
     'no':11112222,
     'title': '국어 선생님과 수업일',
-    'content':'한글 선생님과 공부하기',
+    'content':'content 내용입니다.',
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
@@ -68,7 +68,8 @@ export default [
     'no':12112223,
     'title': 'Long Event',
     'start': new Date(2015, 3, 7),
-    'end': new Date(2015, 3, 10)
+    'end': new Date(2015, 3, 10),
+    'planType':4
   },
 
   {
