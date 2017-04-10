@@ -61,6 +61,7 @@ export default [
   },
   {
     'no':11112223,
+    'title': '수학 선생님과 수업일',
     'start': new Date(2015, 3, 7),
     'end': new Date(2015, 3, 10),
     'CustomComponent':<CustomComponent labelArr={['수학']}/>,
