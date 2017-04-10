@@ -19,10 +19,10 @@ let Selectable = React.createClass({
           onSelectEvent={(event) => {
             console.log(event);
           }}
-          onSelectSlot={(slotInfo) => alert(
-            `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-            `\nend: ${slotInfo.end.toLocaleString()}`
-          )}
+          onSelectSlot={(slotInfo) => {
+            console.log(slotInfo)
+            console.log(`selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +`\nend: ${slotInfo.end.toLocaleString()}`)
+          }}
         />
       </div>
     )

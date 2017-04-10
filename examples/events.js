@@ -33,7 +33,7 @@ export default [
     'start': new Date(2015, 3, 0),
     'end': new Date(2015, 3, 1),
     'CustomComponent':<CustomComponent labelArr={['영어', '국어']}/>,
-    'dateStyleType': ''
+    'notEdit':true
   },
   {
     'no':11112223,

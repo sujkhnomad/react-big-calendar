@@ -323,6 +323,11 @@ let MonthView = React.createClass({
 
     slots.sort((a, b) => +a - +b)
 
+    //month타입 달력일때 slots에 end가 정확히 들어가지 않는 버그 픽스 
+    if(slots.length === 1){
+      slots.push(new Date(Date.parse(slots[0]) + 1 * 1000 * 60 * 60 * 24))
+    }
+
     notify(this.props.onSelectSlot, {
       slots,
       start: slots[0],
