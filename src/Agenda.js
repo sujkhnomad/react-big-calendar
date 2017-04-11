@@ -103,12 +103,6 @@ let Agenda = React.createClass({
       let dateLabelArr
       if(dateLabel){
         dateLabelArr = dateLabel.split(' ')
-        dateLabelArr = (
-        <h2>
-          {dateLabelArr[0]}
-          <span>{dateLabelArr[1]}</span>
-        </h2>
-      )
       }
 
 

@@ -159,8 +159,6 @@ class Toolbar extends React.Component {
         default:
           break;
       }
-
-
   }
 }
 
