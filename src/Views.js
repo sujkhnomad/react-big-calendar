@@ -7,8 +7,6 @@ import Agenda from './Agenda';
 const VIEWS = {
   [views.MONTH]: Month,
   [views.AGENDA]: Agenda
-  // [views.DAY]: Day,
-  // [views.WEEK]: Week,
 };
 
 export default VIEWS;

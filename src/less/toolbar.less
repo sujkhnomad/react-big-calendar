@@ -14,6 +14,12 @@
   font-size: 16px;
   position: relative;
   min-height: 60px;
+
+  &.agenda{
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  }
     
   &:after{
     content:'';
@@ -36,7 +42,7 @@
   }
   .rbc-btn-group-custom{
     position: absolute;
-    top: 16px;
+    top: 12px;
     right: 7px;
   }
 
@@ -69,31 +75,33 @@
   .today{
     display: inline-block;
     vertical-align: middle;
-    height: 22px;
-    padding: 0 14px;
+    height: 32px;
+    padding: 3px 8px 0 8px;
     box-sizing: border-box;
     font-size: 13px;
     background-color: transparent;
     color: #00bbd4;
     text-decoration: underline;
   }
-  .dateCate-month{
+  .dateCate.month{
     position: relative;
     display: inline-block;
     width: 30px;
-    height: 22px;
-    padding: 0 8px;
+    height: 32px;
+    padding: 10px 8px 0 8px;
     vertical-align: middle;
+    box-sizing: border-box;
     background: url('../images/bg_list.png') 50% 50% /auto 12px no-repeat;
   }
-  .dateCate-agenda{
+  .dateCate.agenda{
     position: relative;
     display: inline-block;
     width: 30px;
-    height: 22px;
-    padding: 0 8px;
+    height: 32px;
+    padding:0;
     vertical-align: middle;
-    background: url('../images/icon_calendar.png') 50% 50% /auto 12px no-repeat;
+    box-sizing: border-box;
+    background: url('../images/bg_calendar.png') 50% 50% /auto 15px no-repeat;
   }
 
 ////////////////// custom style 끝.

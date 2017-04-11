@@ -43,11 +43,13 @@ class Toolbar extends React.Component {
   }
   render() {
     let { messages, label, view, headDateClick, date, headPrevButtonClick, headNextButtonClick } = this.props;
-    let openClass = this.state.isSelect ? 'on' : ''
-    let toggle = `dateCate ${openClass}`
+    let openClass = view === 'agenda' ? 'agenda' : ''
+    let toolbarStyle = `rbc-toolbar ${openClass}`
+    
+    console.log(view)
     messages = message(messages)
     return (
-      <div className='rbc-toolbar'>
+      <div className={toolbarStyle}>
         <span className='rbc-btn-group'>
           <button
             type='button'
@@ -131,20 +133,41 @@ class Toolbar extends React.Component {
   viewNamesGroup(messages) {
     let viewNames = this.props.views
     const view = this.props.view
-    const cateClassName = `dateCate-${view}`
+    const cateClassName = `dateCate ${view}`
     if (viewNames.length > 1) {
       
       return (
-        viewNames.map((name, i) =>
-          <button key={i}
-            type='button'
-            className={ cn({ [cateClassName] : view === name})}
-            onClick={()=>{
-              this.view(name)
-            }}
-          >
-            {messages[name]}
-          </button>
+        viewNames.map((name, i) => {
+          switch (name) {
+            case 'month':
+              return(
+                <button
+                  type='button'
+                  className={ cn({ [cateClassName] : view === name})}
+                  onClick={()=>{
+                    this.view('agenda')
+                  }}
+                >
+                </button>
+              )
+              break;
+
+            case 'agenda':
+              return (
+                <button type='button'
+                  className={ cn({ [cateClassName] : view === name})}
+                  onClick={()=>{
+                    this.view('month')
+                  }}
+                >
+                </button>
+              )
+          
+            default:
+              break;
+          }
+        }
+          
         )
       )
     }
@@ -152,3 +175,12 @@ class Toolbar extends React.Component {
 }
 
 export default Toolbar;
+{/*<button key={i}
+            type='button'
+            className={ cn({ [cateClassName] : view === name})}
+            onClick={()=>{
+              this.view(name)
+            }}
+          >
+           
+          </button>*/}

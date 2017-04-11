@@ -103,16 +103,23 @@ let Agenda = React.createClass({
       let dateLabelArr
       if(dateLabel){
         dateLabelArr = dateLabel.split(' ')
-        console.log(dateLabelArr[0])
-        console.log(dateLabelArr[1])
+        console.log(dateLabelArr)
+
+        dateLabelArr = (
+        <h2>
+          {dateLabelArr[0]}
+          <span>{dateLabelArr[1]}</span>
+        </h2>
+      )
       }
+      
 
       let first = idx === 0
           ? (
             <div className='rbc-agenda-date-cell'>
               { DateComponent
                 ? <DateComponent day={day} label={dateLabel}/>
-                : <span>{dateLabelArr[0]}</span>
+                : <div>{dateLabelArr}</div>
               }
             </div>
           ) : false
@@ -131,7 +138,7 @@ let Agenda = React.createClass({
             <tbody>
               <tr>
                 {/*이곳에 타입에따른 스타일적용*/}
-                  <th className="math color">
+                  <th className="kor color">
                 {/*이곳에 타입에따른 스타일적용*/}
                     <div className="time">
                       <small>{moment(event.start).format('a')}</small>
@@ -151,9 +158,9 @@ let Agenda = React.createClass({
                               : title
                           }
                       </strong>
-                      {event.content && <div>
+                      {event.content && <p>
                         {event.content}
-                        </div>}
+                        </p>}
                     </div>
                   </td>
               </tr>
