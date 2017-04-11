@@ -9,10 +9,10 @@ export const navigate = {
 
 export const views = {
   MONTH: 'month',
+  AGENDA: 'agenda',
   WEEK: 'week',
   WORK: 'workweek',
   DAY: 'day',
-  AGENDA: 'agenda'
 }
 
 export const DEFUALT_COLOR = {

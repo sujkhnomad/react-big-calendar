@@ -45,7 +45,7 @@ class Toolbar extends React.Component {
     let openClass = this.state.isSelect ? 'on' : ''
     let toggle = `dateCate ${openClass}`
     messages = message(messages)
-   
+    console.log(this.props)
     return (
       <div className='rbc-toolbar'>
         <span className='rbc-btn-group'>
@@ -107,17 +107,14 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button>
-          <button className={toggle}
-            onClick={this.toggleClass}
-            onBlur={this.onblur}
-            >
-
-            <ul className='dateCatelist'>
             {
               this.viewNamesGroup(messages)
             }
-            </ul>
-          </button>
+            {/*<ul className='dateCatelist'>
+            {
+              this.viewNamesGroup(messages)
+            }
+            </ul>*/}
         </span>
       </div>
     );
@@ -134,19 +131,20 @@ class Toolbar extends React.Component {
   viewNamesGroup(messages) {
     let viewNames = this.props.views
     const view = this.props.view
-
+    const cateClassName = `dateCate-${view}`
     if (viewNames.length > 1) {
+      
       return (
-        viewNames.map(name =>
-          <li key={name}
+        viewNames.map((name, i) =>
+          <button key={i}
             type='button'
-            className={cn({'rbc-active': view === name})}
+            className={ cn({ [cateClassName] : view === name})}
             onClick={()=>{
               this.view(name)
             }}
           >
             {messages[name]}
-          </li>
+          </button>
         )
       )
     }

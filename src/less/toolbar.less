@@ -10,10 +10,11 @@
   // margin-bottom: 10px;
   text-align: center;
   background-color: #fff;
-  padding:16px 0 8px;
+  padding:16px 0 0;
   font-size: 16px;
   position: relative;
-
+  min-height: 60px;
+    
   &:after{
     content:'';
     display: block;
@@ -76,7 +77,7 @@
     color: #00bbd4;
     text-decoration: underline;
   }
-  .dateCate{
+  .dateCate-month{
     position: relative;
     display: inline-block;
     width: 30px;
@@ -84,37 +85,17 @@
     padding: 0 8px;
     vertical-align: middle;
     background: url('../images/bg_list.png') 50% 50% /auto 12px no-repeat;
-
-
-    .dateCatelist{
-      display: none;
-    }
-    &.on{
-      .dateCatelist{
-        display: block;
-      }
-    }
-
   }
-  .dateCatelist{
-    position: absolute;
-    z-index: 999;
-    top: 100%;
-    right: 7px;
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-
-    button{
-      width: 100%;
-      padding: 10px;
-
-      & + & {
-        margin-top: 10px;
-      }
-
-    }
+  .dateCate-agenda{
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    padding: 0 8px;
+    vertical-align: middle;
+    background: url('../images/icon_calendar.png') 50% 50% /auto 12px no-repeat;
   }
+
 ////////////////// custom style 끝.
   & button {
     // color: @btn-color;

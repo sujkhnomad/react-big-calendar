@@ -103,17 +103,18 @@ let Agenda = React.createClass({
       let dateLabelArr
       if(dateLabel){
         dateLabelArr = dateLabel.split(' ')
-        console.log(dateLabelArr)
+        console.log(dateLabelArr[0])
+        console.log(dateLabelArr[1])
       }
 
       let first = idx === 0
           ? (
-            <h2 rowSpan={events.length} className='rbc-agenda-date-cell'>
+            <div className='rbc-agenda-date-cell'>
               { DateComponent
                 ? <DateComponent day={day} label={dateLabel}/>
-                : dateLabel
+                : <span>{dateLabelArr[0]}</span>
               }
-            </h2>
+            </div>
           ) : false
 
       let title = get(event, titleAccessor)
