@@ -165,6 +165,7 @@ class DateContentRow extends React.Component {
     }))
 
     let { levels, extra } = eventLevels(segments, Math.max(maxRows - 1, 1));
+
     while (levels.length < minRows ) levels.push([])
 
     return (
@@ -187,8 +188,7 @@ class DateContentRow extends React.Component {
             </div>
           )}
           {levels.map((segs, idx) => {
-
-            let isInMonth = moment(segs[idx].event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
+            let isInMonth = moment(segs[0].event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
 
             if(isInMonth){
               return(

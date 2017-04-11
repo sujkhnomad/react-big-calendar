@@ -54,7 +54,7 @@ export default [
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
     'planEditors':['교사', '관리자'],
-    //1:한글 2:영어 3:수학 4:일반 5:추천
+    //1:한글 2:영어 3:수학 4:일반 5:추천 교과 정렬에 사용됩니다.(바꿀때 유의하세요)
     'planType':4
   },
   {
@@ -83,7 +83,7 @@ export default [
   },
   {
     'no':12212222,
-    'title': '낸맘대로 일정111',
+    'title': '낸맘대로 일정222',
     'content':'신나게 놀자',
     'start': new Date(2015, 3, 1, 9, 0, 0),
     'end': new Date(2015, 3, 1, 9, 30, 0),
@@ -95,7 +95,7 @@ export default [
   },
     {
     'no':12217222,
-    'title': '낸맘대로 일정222',
+    'title': '낸맘대로 일정333',
     'content':'신나게 놀자',
     'start': new Date(2015, 3, 1, 11, 0, 0),
     'end': new Date(2015, 3, 1, 11, 30, 0),
