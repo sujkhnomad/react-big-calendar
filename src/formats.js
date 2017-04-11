@@ -6,8 +6,11 @@ function inSame12Hr(start, end){
   return (s <= 0 && e <= 0) || (s >= 0 && e >= 0)
 }
 
-let dateRangeFormat = ({ start, end }, culture, local)=>
-  local.format(start, 'MM[.]DD', culture) + ' — ' + local.format(end, 'MM[.]DD', culture)
+let dateRangeFormat = ({ start, end }, culture, local)=>{
+  //local.format(start, 'YYYY.MM', culture) + ' — ' + local.format(end, 'MM[.]DD', culture)
+  return local.format(start, 'YYYY.MM', culture);
+}
+
 
 let timeRangeFormat = ({ start, end }, culture, local)=>
   local.format(start, 'h:mm', culture) +
