@@ -52,10 +52,12 @@ let Agenda = React.createClass({
   // },
 
   render() {
-    let { length, date, events, startAccessor, calendarInMonth } = this.props;
-    let messages = message(this.props.messages);
-    let end = dates.add(date, length, 'day')
-    let range = dates.range(date, end, 'day');
+    //let { length, date, events, startAccessor, calendarInMonth } = this.props;
+    let { events, startAccessor, calendarInMonth } = this.props;
+    //let messages = message(this.props.messages);
+    //let end = dates.add(date, length, 'day')
+    //let range = dates.range(date, end, 'day');
+    let range = dates.customRange(calendarInMonth);
 
     // events = events.filter(event =>
     //   inRange(event, date, end, this.props)
@@ -64,7 +66,6 @@ let Agenda = React.createClass({
     events = events.filter((event) =>{
       return moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
     })
-    //데이터가 없으면 추가로 넣어야합니다.
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
