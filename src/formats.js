@@ -33,7 +33,7 @@ let formats = {
   dayRangeHeaderFormat: weekRangeFormat,
   agendaHeaderFormat: dateRangeFormat,
 
-  agendaDateFormat: 'YYYY[.]MM[.]DD',
+  agendaDateFormat: 'DD[일] dddd',
   agendaTimeFormat: 'HH:mm',
   agendaTimeRangeFormat: timeRangeFormat
 }

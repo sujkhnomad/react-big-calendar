@@ -100,6 +100,12 @@ let Agenda = React.createClass({
 
     return events.map((event, idx) => {
       let dateLabel = idx === 0 && localizer.format(day, agendaDateFormat, culture)
+      let dateLabelArr
+      if(dateLabel){
+        dateLabelArr = dateLabel.split(' ')
+        console.log(dateLabelArr)
+      }
+
       let first = idx === 0
           ? (
             <h2 rowSpan={events.length} className='rbc-agenda-date-cell'>
