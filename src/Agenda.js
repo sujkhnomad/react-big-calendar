@@ -61,8 +61,6 @@ let Agenda = React.createClass({
     events = events.filter(event =>
       inRange(event, date, end, this.props)
     )
-    console.log('this.events', events)
-    console.log('this.events', event)
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
@@ -90,21 +88,18 @@ let Agenda = React.createClass({
         return false
     }
   },
-   planTypeStyle(events, idx){
-        switch (events[idx].planType) {
+   planTypeStyle(type){
+        switch (type) {
           case 1:
             return 'kor'
-            break;
           case 2:
             return 'eng'
-            break;
           case 3:
             return 'math'
-            break;
           case 4:
-            return ''        
-          default:
-            break;
+            return ''
+            default:
+            return false
         }
   },
   renderDay(day, events, dayKey){
@@ -114,7 +109,6 @@ let Agenda = React.createClass({
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
-    
     events = events.filter(e => inRange(e, day, day, this.props))
 
     return events.map((event, idx) => {
@@ -134,11 +128,9 @@ let Agenda = React.createClass({
               }
             </div>
           ) : false
-
       let title = get(event, titleAccessor)
-      console.log(event)
       let planType = self.selectSummaryText(event.planType);
-      let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
+      let planTypeStyle = planType ? `color ${this.planTypeStyle(event.planType)}`: ''
       return (
         <li key={dayKey + '_' + idx} className="schedule-list">
           {first}
@@ -150,9 +142,7 @@ let Agenda = React.createClass({
             </colgroup>
             <tbody>
               <tr>
-                {/*이곳에 타입에따른 스타일적용*/}
                   <th className={planTypeStyle}>
-                {/*이곳에 타입에따른 스타일적용*/}
                     <div className="time">
                       <small>{moment(event.start).format('a')}</small>
                       { this.timeRangeLabel(day, event) }
