@@ -41,7 +41,6 @@ class Dnd extends React.Component {
         selectable
         events={this.state.events}
         onEventDrop={this.moveEvent}
-        defaultView='week'
         defaultDate={new Date(2015, 3, 12)}
       />
     )
