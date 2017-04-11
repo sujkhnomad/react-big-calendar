@@ -131,46 +131,36 @@ class Toolbar extends React.Component {
   }
 
   viewNamesGroup(messages) {
-    let viewNames = this.props.views
     const view = this.props.view
+    let name = messages[view];
     const cateClassName = `dateCate ${view}`
-    if (viewNames.length > 1) {
-      
-      return (
-        viewNames.map((name, i) => {
-          switch (name) {
-            case 'month':
-              return(
-                <button
-                  type='button'
-                  className={ cn({ [cateClassName] : view === name})}
-                  onClick={()=>{
-                    this.view('agenda')
-                  }}
-                >
-                </button>
-              )
-              break;
+      switch (view) {
+        case 'month':
+          return(
+            <button
+              type='button'
+              className={ cn({ [cateClassName] : view === name})}
+              onClick={()=>{
+                this.view('agenda')
+              }}
+            >
+            </button>
+          )
+        case 'agenda':
+          return (
+            <button type='button'
+              className={ cn({ [cateClassName] : view === name})}
+              onClick={()=>{
+                this.view('month')
+              }}
+            >
+            </button>
+          )
+        default:
+          break;
+      }
 
-            case 'agenda':
-              return (
-                <button type='button'
-                  className={ cn({ [cateClassName] : view === name})}
-                  onClick={()=>{
-                    this.view('month')
-                  }}
-                >
-                </button>
-              )
-          
-            default:
-              break;
-          }
-        }
-          
-        )
-      )
-    }
+
   }
 }
 
