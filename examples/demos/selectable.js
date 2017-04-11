@@ -13,7 +13,6 @@ let Selectable = React.createClass({
         <BigCalendar
           selectable
           events={events}
-          defaultView='week'
           scrollToTime={new Date(1970, 1, 1, 6)}
           defaultDate={new Date(2015, 3, 12)}
           onSelectEvent={(event) => {
