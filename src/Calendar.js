@@ -479,6 +479,7 @@ let Calendar = React.createClass({
 
   getView() {
     const views = this.getViews();
+    //해당 뷰에서 toolbar의 prev next버튼의 날짜 이동 기간이 정해지는데 우리 프로젝트에서는 달로 고정시켜야 합니다.
 
     return views[this.props.view];
   },

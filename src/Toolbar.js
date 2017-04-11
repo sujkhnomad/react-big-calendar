@@ -137,11 +137,12 @@ class Toolbar extends React.Component {
     if (viewNames.length > 1) {
       
       return (
-        viewNames.map((name, i) => {
+        viewNames.map((name, idx) => {
           switch (name) {
             case 'month':
               return(
                 <button
+                  key={idx}
                   type='button'
                   className={ cn({ [cateClassName] : view === name})}
                   onClick={()=>{
@@ -150,11 +151,10 @@ class Toolbar extends React.Component {
                 >
                 </button>
               )
-              break;
-
             case 'agenda':
               return (
                 <button type='button'
+                  key={idx}
                   className={ cn({ [cateClassName] : view === name})}
                   onClick={()=>{
                     this.view('month')
