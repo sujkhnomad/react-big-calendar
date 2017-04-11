@@ -24,6 +24,7 @@ class Basic extends React.Component {
   render(){
     return (
       <BigCalendar
+        selectable
         {...this.props}
         events={events}
         defaultDate={new Date(2015, 3, 1)}
@@ -31,6 +32,13 @@ class Basic extends React.Component {
         headPrevButtonClick={this.headPrevButtonClick.bind(this)}
         headNextButtonClick={this.headNextButtonClick.bind(this)}
         sundayColor={'#bdbdbd'}
+        onSelectEvent={(event) => {
+          console.log(event);
+        }}
+        onSelectSlot={(slotInfo) => {
+          console.log(slotInfo)
+          console.log(`selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +`\nend: ${slotInfo.end.toLocaleString()}`)
+        }}
       />
     )
   }
