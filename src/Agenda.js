@@ -96,18 +96,15 @@ let Agenda = React.createClass({
    planTypeStyle(events, idx){
         switch (events[idx].planType) {
           case 1:
-            return 'kor'
-            break;
+            return 'kor';
           case 2:
-            return 'eng'
-            break;
+            return 'eng';
           case 3:
-            return 'math'
-            break;
+            return 'math';
           case 4:
-            return ''        
+            return '';
           default:
-            break;
+            return '';
         }
   },
   renderDay(day, events, dayKey){
