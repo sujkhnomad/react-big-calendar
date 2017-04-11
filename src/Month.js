@@ -74,7 +74,7 @@ let propTypes = {
     })
   ]),
   sundayColor: React.PropTypes.string,
-  nowMonth:React.PropTypes.object
+  calendarInMonth:React.PropTypes.object
 };
 
 let MonthView = React.createClass({
@@ -167,7 +167,7 @@ let MonthView = React.createClass({
       allDayAccessor,
       eventPropGetter,
       messages,
-      nowMonth,
+      calendarInMonth,
       selected } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
@@ -207,13 +207,13 @@ let MonthView = React.createClass({
         eventWrapperComponent={components.eventWrapper}
         dateCellWrapper={components.dateCellWrapper}
 
-        nowMonth={nowMonth}
+        calendarInMonth={calendarInMonth}
       />
     )
   },
 
   readerDateHeading({ date, className, ...props }) {
-    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor, nowMonth  } = this.props;
+    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor, calendarInMonth  } = this.props;
     let isOffRange = dates.month(date) !== dates.month(currentDate);
     let isCurrent = dates.eq(date, currentDate, 'day');
     let drilldownView = getDrilldownView(date);
@@ -222,7 +222,7 @@ let MonthView = React.createClass({
     //일요일 라벨 색상
     let selectSunDayColor = sundayColor ? sundayColor : DEFUALT_COLOR.SUNDAY;
     //같은 달 체크
-    let isInMonth = moment(date).isBetween(nowMonth, moment(nowMonth).add(1, 'month'), null, '[)');
+    let isInMonth = moment(date).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
 
     return (
       <div

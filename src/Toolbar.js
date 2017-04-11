@@ -17,6 +17,7 @@ class Toolbar extends React.Component {
     date: React.PropTypes.object,
     headPrevButtonClick: React.PropTypes.func,
     headNextButtonClick: React.PropTypes.func,
+    calendarInMonth:React.PropTypes.object
   }
   constructor(){
     super();
@@ -45,7 +46,7 @@ class Toolbar extends React.Component {
     let openClass = this.state.isSelect ? 'on' : ''
     let toggle = `dateCate ${openClass}`
     messages = message(messages)
-   
+
     return (
       <div className='rbc-toolbar'>
         <span className='rbc-btn-group'>

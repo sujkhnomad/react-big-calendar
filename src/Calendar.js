@@ -519,7 +519,7 @@ let Calendar = React.createClass({
     )
 
     let ToolbarToRender = components.toolbar || Toolbar
-    let nowMonth = moment(`${moment(current).format('YYYY-MM')}-01`).toDate()
+    let calendarInMonth = moment(`${moment(current).format('YYYY-MM')}-01`).toDate()
     return (
       <div
         {...elementProps}
@@ -540,6 +540,7 @@ let Calendar = React.createClass({
             headDateClick={this.props.headDateClick}
             headPrevButtonClick={this.props.headPrevButtonClick}
             headNextButtonClick={this.props.headNextButtonClick}
+            calendarInMonth={calendarInMonth}
           />
         }
         <View
@@ -557,7 +558,7 @@ let Calendar = React.createClass({
           onSelectEvent={this.handleSelectEvent}
           onSelectSlot={this.handleSelectSlot}
           onShowMore={this._showMore}
-          nowMonth={nowMonth}
+          calendarInMonth={calendarInMonth}
         />
       </div>
     );
