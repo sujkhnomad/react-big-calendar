@@ -117,12 +117,7 @@ let Agenda = React.createClass({
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
-<<<<<<< HEAD
-    //console.log('this.props', this.props)
-    //현재달인지 판단하여 필터를 겁니다.
-=======
-    
->>>>>>> ae7e2ea93669f966c5fecb14efb0e46c2b2ebfb9
+
     events = events.filter(e => inRange(e, day, day, this.props))
 
     return events.map((event, idx) => {
@@ -144,7 +139,7 @@ let Agenda = React.createClass({
           ) : false
 
       let title = get(event, titleAccessor)
-      console.log(event)
+
       let planType = self.selectSummaryText(event.planType);
       let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
       return (
