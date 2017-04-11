@@ -263,10 +263,10 @@ let Agenda = React.createClass({
 Agenda.navigate = (date, action)=>{
   switch (action){
     case navigate.PREVIOUS:
-      return dates.add(date, -1, 'day');
+      return dates.add(date, -1, 'month');
 
     case navigate.NEXT:
-      return dates.add(date, 1, 'day')
+      return dates.add(date, 1, 'month')
 
     default:
       return date;
