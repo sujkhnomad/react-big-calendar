@@ -1,6 +1,7 @@
 /* eslint no-fallthrough: off */
 import dateMath from 'date-arithmetic';
 import localizer from '../localizer';
+import moment from 'moment';
 
 const MILLI = {
   seconds: 1000,
@@ -62,6 +63,16 @@ let dates = {
     }
 
     return days
+  },
+  customRange(start){
+    let startAfterMonth = moment(start).add(1, 'month');
+    let days = [];
+    let current = moment(start)
+    while(moment(startAfterMonth).isAfter(current)){
+      days.push(current.toDate());
+      current = moment(current).add(1, 'day');
+    }
+    return days;
   },
 
   merge(date, time){
