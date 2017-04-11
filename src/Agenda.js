@@ -116,9 +116,17 @@ let Agenda = React.createClass({
     let DateComponent = components.date;
     events = events.filter(e => inRange(e, day, day, this.props))
     console.log('event', events)
-    // events = events.sort((a, b)=>{
-
-    // })
+    events = events.sort((a, b)=>{
+      if(a.planType > 0 && a.planType < 4){
+        return false
+      }
+      else if(b.planType > 0 && b.planType < 4){
+        return true
+      }
+      else{
+        return false
+      }
+    })
 
     if(0 != events.length){
       return events.map((event, idx) => {

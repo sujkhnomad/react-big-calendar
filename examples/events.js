@@ -48,9 +48,8 @@ export default [
   {
     'no':11112222,
     'title': '국어 선생님과 수업일',
-    'start': new Date(2015, 3, 1),
-    'end': new Date(2015, 3, 2),
-    'allDay': true,
+    'start': new Date(2015, 3, 1, 8, 0, 0),
+    'end': new Date(2015, 3, 1, 8, 30, 0),
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     'CustomComponent':<CustomComponent labelArr={['국어']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
@@ -58,12 +57,47 @@ export default [
     //1:한글 2:영어 3:수학 4:일반 5:추천
     'planType':1
   },
-    {
+  {
     'no':11212222,
     'title': '수학 선생님과 수업일',
-    'start': new Date(2015, 3, 1),
-    'end': new Date(2015, 3, 2),
-    'allDay': true,
+    'start': new Date(2015, 3, 1, 10, 0, 0),
+    'end': new Date(2015, 3, 1, 10, 30, 0),
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
+    'CustomComponent':<CustomComponent labelArr={['수학']}/>,
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':3
+  },
+  {
+    'no':12212222,
+    'title': '낸맘대로 일정111',
+    'content':'신나게 놀자',
+    'start': new Date(2015, 3, 1, 9, 0, 0),
+    'end': new Date(2015, 3, 1, 9, 30, 0),
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':4
+  },
+    {
+    'no':12217222,
+    'title': '낸맘대로 일정222',
+    'content':'신나게 놀자',
+    'start': new Date(2015, 3, 1, 11, 0, 0),
+    'end': new Date(2015, 3, 1, 11, 30, 0),
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':4
+  },
+  {
+    'no':19212222,
+    'title': '수학 선생님과 수업일',
+    'start': new Date(2015, 3, 1, 12, 0, 0),
+    'end': new Date(2015, 3, 1, 12, 30, 0),
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     'CustomComponent':<CustomComponent labelArr={['수학']}/>,
     //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
