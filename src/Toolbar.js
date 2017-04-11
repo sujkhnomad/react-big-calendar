@@ -45,8 +45,7 @@ class Toolbar extends React.Component {
     let { messages, label, view, headDateClick, date, headPrevButtonClick, headNextButtonClick } = this.props;
     let openClass = view === 'agenda' ? 'agenda' : ''
     let toolbarStyle = `rbc-toolbar ${openClass}`
-    
-    console.log(view)
+
     messages = message(messages)
     return (
       <div className={toolbarStyle}>

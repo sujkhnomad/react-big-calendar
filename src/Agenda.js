@@ -33,7 +33,8 @@ let Agenda = React.createClass({
     messages: PropTypes.shape({
       date: PropTypes.string,
       time: PropTypes.string,
-    })
+    }),
+    calendarInMonth: React.PropTypes.object
   },
 
   getDefaultProps() {
@@ -51,16 +52,18 @@ let Agenda = React.createClass({
   // },
 
   render() {
-    let { length, date, events, startAccessor } = this.props;
+    let { length, date, events, startAccessor, calendarInMonth } = this.props;
     let messages = message(this.props.messages);
     let end = dates.add(date, length, 'day')
 
-    let range = dates.range(date, end, 'day');
-
-
-    events = events.filter(event =>
-      inRange(event, date, end, this.props)
-    )
+    let range = dates.range(date, end, 'day');    
+    // events = events.filter(event =>
+    //   inRange(event, date, end, this.props)
+    // )
+    //이벤트 1달간만 출력
+    events = events.filter((event) =>{
+      return moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
+    })
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
@@ -91,15 +94,15 @@ let Agenda = React.createClass({
    planTypeStyle(type){
         switch (type) {
           case 1:
-            return 'kor'
+            return 'kor';
           case 2:
-            return 'eng'
+            return 'eng';
           case 3:
-            return 'math'
+            return 'math';
           case 4:
-            return ''
-            default:
-            return false
+            return '';
+          default:
+            return '';
         }
   },
   renderDay(day, events, dayKey){
@@ -253,10 +256,10 @@ let Agenda = React.createClass({
 Agenda.navigate = (date, action)=>{
   switch (action){
     case navigate.PREVIOUS:
-      return dates.add(date, -1, 'day');
+      return dates.add(date, -1, 'month');
 
     case navigate.NEXT:
-      return dates.add(date, 1, 'day')
+      return dates.add(date, 1, 'month')
 
     default:
       return date;

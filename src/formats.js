@@ -12,9 +12,12 @@ let dateRangeFormat = ({ start, end }, culture, local)=>{
 }
 
 
-let timeRangeFormat = ({ start, end }, culture, local)=>
-  local.format(start, 'h:mm', culture) +
-    ' — ' + local.format(end, inSame12Hr(start, end) ? 'HH:mm' : 'HH:mm', culture)
+let timeRangeFormat = ({ start, end }, culture, local)=>{
+  // local.format(start, 'h:mm', culture) +
+  //   ' — ' + local.format(end, inSame12Hr(start, end) ? 'HH:mm' : 'HH:mm', culture)
+  return local.format(start, 'h:mm', culture)
+}
+
 
 let weekRangeFormat = ({ start, end }, culture, local)=>
   local.format(start, 'MM[.]DD', culture) +
