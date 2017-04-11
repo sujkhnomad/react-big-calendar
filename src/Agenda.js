@@ -33,7 +33,8 @@ let Agenda = React.createClass({
     messages: PropTypes.shape({
       date: PropTypes.string,
       time: PropTypes.string,
-    })
+    }),
+    calendarInMonth: React.PropTypes.object
   },
 
   getDefaultProps() {
@@ -51,16 +52,22 @@ let Agenda = React.createClass({
   // },
 
   render() {
-    let { length, date, events, startAccessor } = this.props;
+    let { length, date, events, startAccessor, calendarInMonth } = this.props;
     let messages = message(this.props.messages);
     let end = dates.add(date, length, 'day')
 
     let range = dates.range(date, end, 'day');
-
-    events = events.filter(event =>
-      inRange(event, date, end, this.props)
-    )
-
+    //moment('2010-10-20').isBefore('2010-12-31', 'year')
+    //이벤트 정렬 
+    console.log('events', events)
+    // events = events.filter(event =>
+    //   inRange(event, date, end, this.props)
+    // )
+    console.log('this.props.calendarInMonth',this.props.calendarInMonth)
+    events = events.filter((event) =>{
+      return moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
+    })
+    console.log('events', events)
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
     return (
@@ -95,7 +102,8 @@ let Agenda = React.createClass({
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
-
+    //console.log('this.props', this.props)
+    //현재달인지 판단하여 필터를 겁니다.
     events = events.filter(e => inRange(e, day, day, this.props))
 
     return events.map((event, idx) => {
