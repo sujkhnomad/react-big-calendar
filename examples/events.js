@@ -49,8 +49,8 @@ export default [
     'no':11112222,
     'title': '국어 선생님과 수업일',
     'content':'content 내용입니다.',
-    'start': new Date(2015, 3, 0),
-    'end': new Date(2015, 3, 1),
+    'start': new Date(2015, 3, 1),
+    'end': new Date(2015, 3, 2),
     'allDay': true,
     //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
     'CustomComponent':<CustomComponent labelArr={['국어']}/>,
@@ -77,15 +77,15 @@ export default [
   {
     'no':11112224,
     'title': 'DTS STARTS',
-    'start': new Date(2016, 2, 13, 0, 0, 0),
-    'end': new Date(2016, 2, 20, 0, 0, 0)
+    'start': new Date(2015, 2, 13, 0, 0, 0),
+    'end': new Date(2015, 2, 14, 0, 0, 0)
   },
 
   {
     'no':11112225,
     'title': 'DTS ENDS',
-    'start': new Date(2016, 10, 6, 0, 0, 0),
-    'end': new Date(2016, 10, 13, 0, 0, 0)
+    'start': new Date(2015, 3, 6, 0, 0, 0),
+    'end': new Date(2015, 3, 7, 0, 0, 0)
   },
 
   {

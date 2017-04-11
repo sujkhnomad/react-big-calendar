@@ -187,7 +187,8 @@ class DateContentRow extends React.Component {
             </div>
           )}
           {levels.map((segs, idx) => {
-            let isInMonth = moment(range[idx]).isBetween(nowMonth, moment(nowMonth).add(1, 'month'), null, '[)');
+
+            let isInMonth = moment(segs[idx].event.start).isBetween(nowMonth, moment(nowMonth).add(1, 'month'), null, '[)');
 
             if(isInMonth){
               return(
