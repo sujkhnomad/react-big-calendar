@@ -117,14 +117,21 @@ let Agenda = React.createClass({
     events = events.filter(e => inRange(e, day, day, this.props))
     console.log('event', events)
     events = events.sort((a, b)=>{
-      if(a.planType > 0 && a.planType < 4){
+      //둘다 교과일때
+      if(a.planType < 4 && b.planType < 4){
+        return moment(a.start).isAfter(b.start)
+      }
+      //a만 교과일때
+      else if(a.planType < 4){
         return false
       }
-      else if(b.planType > 0 && b.planType < 4){
+      //b만 교과일때
+      else if(b.planType < 4){
         return true
       }
+      //그밖에
       else{
-        return false
+        return moment(a.start).isAfter(b.start)
       }
     })
 
