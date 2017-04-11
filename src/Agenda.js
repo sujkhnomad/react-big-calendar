@@ -58,7 +58,6 @@ let Agenda = React.createClass({
 
     let range = dates.range(date, end, 'day');
 
-    
     // events = events.filter(event =>
     //   inRange(event, date, end, this.props)
     // )
@@ -66,6 +65,7 @@ let Agenda = React.createClass({
     events = events.filter((event) =>{
       return moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
     })
+    //데이터가 없으면 추가로 넣어야합니다.
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
@@ -117,80 +117,90 @@ let Agenda = React.createClass({
 
     events = events.filter(e => inRange(e, day, day, this.props))
 
-    return events.map((event, idx) => {
-      let dateLabel = idx === 0 && localizer.format(day, agendaDateFormat, culture)
-      let dateLabelArr
-      if(dateLabel){
-        dateLabelArr = dateLabel.split(' ')
-      }
+    if(0 != events.length){
+      return events.map((event, idx) => {
+        let dateLabel = idx === 0 && localizer.format(day, agendaDateFormat, culture)
+        let dateLabelArr
+        if(dateLabel){
+          dateLabelArr = dateLabel.split(' ')
+        }
 
 
-      let first = idx === 0
-          ? (
-            <div className='rbc-agenda-date-cell'>
-              { DateComponent
-                ? <DateComponent day={day} label={dateLabel}/>
-                : <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
+        let first = idx === 0
+            ? (
+              <div className='rbc-agenda-date-cell'>
+                { DateComponent
+                  ? <DateComponent day={day} label={dateLabel}/>
+                  : <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
+                }
+              </div>
+            ) : false
+
+        let title = get(event, titleAccessor)
+
+        let planType = self.selectSummaryText(event.planType);
+        let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
+        return (
+          <li key={dayKey + '_' + idx} className="schedule-list">
+            {first}
+            <table>
+              <caption>시간별(으)로 구성된 일정 테이블</caption>
+              <colgroup>
+                  <col width="20%"/>
+                  <col width="*"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  {/*이곳에 타입에따른 스타일적용*/}
+                    <th className={planTypeStyle}>
+                  {/*이곳에 타입에따른 스타일적용*/}
+                      <div className="time">
+                        <small>{moment(event.start).format('a')}</small>
+                        { this.timeRangeLabel(day, event) }
+                      </div>
+                    </th>
+                    <td>
+                      <div className="text-box">
+
+                        {/*타입별 태그가 들어갈 곳*/}
+                        {planType && <em className="rbc-tag">{planType}</em>}
+                        {/*타입별 태그가 들어갈 곳*/}
+
+                        <strong>
+                            { EventComponent
+                                ? <EventComponent event={event} title={title}/>
+                                : title
+                            }
+                        </strong>
+                        {event.content && <p>
+                          {event.content}
+                          </p>}
+                      </div>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+            {/*<td className='rbc-agenda-time-cell'>
+              { this.timeRangeLabel(day, event) }
+            </td>
+            <td className='rbc-agenda-event-cell'>
+              { EventComponent
+                  ? <EventComponent event={event} title={title}/>
+                  : title
               }
-            </div>
-          ) : false
-
-      let title = get(event, titleAccessor)
-
-      let planType = self.selectSummaryText(event.planType);
-      let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
-      return (
-        <li key={dayKey + '_' + idx} className="schedule-list">
-          {first}
-          <table>
-            <caption>시간별(으)로 구성된 일정 테이블</caption>
-            <colgroup>
-                <col width="20%"/>
-                <col width="*"/>
-            </colgroup>
-            <tbody>
-              <tr>
-                {/*이곳에 타입에따른 스타일적용*/}
-                  <th className={planTypeStyle}>
-                {/*이곳에 타입에따른 스타일적용*/}
-                    <div className="time">
-                      <small>{moment(event.start).format('a')}</small>
-                      { this.timeRangeLabel(day, event) }
-                    </div>
-                  </th>
-                  <td>
-                    <div className="text-box">
-
-                      {/*타입별 태그가 들어갈 곳*/}
-                      {planType && <em className="rbc-tag">{planType}</em>}
-                      {/*타입별 태그가 들어갈 곳*/}
-
-                      <strong>
-                          { EventComponent
-                              ? <EventComponent event={event} title={title}/>
-                              : title
-                          }
-                      </strong>
-                      {event.content && <p>
-                        {event.content}
-                        </p>}
-                    </div>
-                  </td>
-              </tr>
-            </tbody>
-          </table>
-          {/*<td className='rbc-agenda-time-cell'>
-            { this.timeRangeLabel(day, event) }
-          </td>
-          <td className='rbc-agenda-event-cell'>
-            { EventComponent
-                ? <EventComponent event={event} title={title}/>
-                : title
-            }
-          </td>*/}
-        </li>
+            </td>*/}
+          </li>
+        )
+      }, [])
+    }
+    else{
+      let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
+      return(
+        <div className='rbc-agenda-date-cell' key={dayKey}>
+          <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
+        </div>
       )
-    }, [])
+    }
   },
 
   timeRangeLabel(day, event){
