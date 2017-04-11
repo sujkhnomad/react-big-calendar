@@ -58,6 +58,19 @@ export default [
     //1:한글 2:영어 3:수학 4:일반 5:추천
     'planType':1
   },
+    {
+    'no':11212222,
+    'title': '수학 선생님과 수업일',
+    'start': new Date(2015, 3, 1),
+    'end': new Date(2015, 3, 2),
+    'allDay': true,
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
+    'CustomComponent':<CustomComponent labelArr={['수학']}/>,
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':3
+  },
   {
     'no':11112223,
     'title': '수학 선생님과 수업일',

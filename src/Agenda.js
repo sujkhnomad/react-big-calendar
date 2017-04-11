@@ -115,6 +115,10 @@ let Agenda = React.createClass({
     let EventComponent = components.event;
     let DateComponent = components.date;
     events = events.filter(e => inRange(e, day, day, this.props))
+    console.log('event', events)
+    // events = events.sort((a, b)=>{
+
+    // })
 
     if(0 != events.length){
       return events.map((event, idx) => {
