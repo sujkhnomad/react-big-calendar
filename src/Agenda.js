@@ -55,7 +55,6 @@ let Agenda = React.createClass({
     let { length, date, events, startAccessor, calendarInMonth } = this.props;
     let messages = message(this.props.messages);
     let end = dates.add(date, length, 'day')
-
     let range = dates.range(date, end, 'day');
 
     // events = events.filter(event =>
@@ -93,8 +92,8 @@ let Agenda = React.createClass({
         return false
     }
   },
-   planTypeStyle(events, idx){
-        switch (events[idx].planType) {
+   planTypeStyle(type){
+        switch (type) {
           case 1:
             return 'kor';
           case 2:
@@ -114,7 +113,6 @@ let Agenda = React.createClass({
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
-
     events = events.filter(e => inRange(e, day, day, this.props))
 
     if(0 != events.length){
@@ -139,7 +137,7 @@ let Agenda = React.createClass({
         let title = get(event, titleAccessor)
 
         let planType = self.selectSummaryText(event.planType);
-        let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
+        let planTypeStyle = planType ? `color ${this.planTypeStyle(event.planType)}`: ''
         return (
           <li key={dayKey + '_' + idx} className="schedule-list">
             {first}
@@ -151,9 +149,7 @@ let Agenda = React.createClass({
               </colgroup>
               <tbody>
                 <tr>
-                  {/*이곳에 타입에따른 스타일적용*/}
                     <th className={planTypeStyle}>
-                  {/*이곳에 타입에따른 스타일적용*/}
                       <div className="time">
                         <small>{moment(event.start).format('a')}</small>
                         { this.timeRangeLabel(day, event) }
