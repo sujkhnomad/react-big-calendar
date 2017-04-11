@@ -1,7 +1,7 @@
 
 
 .calendar .calendar-list h2 {
-    padding: 0 16px;
+    padding: 0 11px;
     font-family: 'NanumBarunGothic-Light';
     font-size: 15px;
     line-height: 50px;
@@ -11,16 +11,29 @@
     color: #757575;
     margin-left: 5px;
 }
-.calendar .schedule-list {
-    margin: 0 5px;
-    border-radius: 3px;
+// .calendar .schedule-list {
+//     margin: 0 5px;
+//     border-radius: 3px;
+// }
+.calendar .calendar-list > li.no-schedule h2 {
+    padding: 0;
+}
+.calendar .no-schedule.no-line {
+    border-top: none;
+}
+.calendar .no-schedule {
+    border-top: 1px solid #d4d4d4;
+    margin: 0 16px;
 }
 .schedule-list .time small{
     display: block;
     font-size: 9px;
+    font-family: 'NanumBarunGothic-Bold';
     line-height: 20px;
 }
-
+.calendar .schedule-list table tr {
+    margin: 0 5px;
+}
 .calendar .schedule-list table th {
     width: 20%;
     height: 73px;
@@ -30,6 +43,7 @@
     line-height: 24px;
     color: #212121;
     text-align: center;
+    border-radius: 3px 0 0 3px;
 }
 
 .calendar .schedule-list table th.math {
@@ -49,7 +63,7 @@
     color: #fff;
 }
 
-.calendar .schedule-list{
+.calendar .schedule-list > table{
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
@@ -78,7 +92,9 @@
 .calendar .schedule-list {
     margin-top: 5px;
 }
-
+.schedule-list{
+    margin: 0 5px;
+}
 .calendar .schedule-list table .text-box .rbc-tag {
     height: 18px;
     margin-bottom: 5px;

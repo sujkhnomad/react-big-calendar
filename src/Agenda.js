@@ -192,9 +192,9 @@ let Agenda = React.createClass({
     else{
       let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
       return(
-        <div className='rbc-agenda-date-cell' key={dayKey}>
+        <li className='no-schedule no-line' key={dayKey}>
           <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
-        </div>
+        </li>
       )
     }
   },
