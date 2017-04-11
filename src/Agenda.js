@@ -57,17 +57,16 @@ let Agenda = React.createClass({
     let end = dates.add(date, length, 'day')
 
     let range = dates.range(date, end, 'day');
-    //moment('2010-10-20').isBefore('2010-12-31', 'year')
-    //이벤트 정렬 
-    console.log('events', events)
+
+    
     // events = events.filter(event =>
     //   inRange(event, date, end, this.props)
     // )
-    console.log('this.props.calendarInMonth',this.props.calendarInMonth)
+    //이벤트 1달간만 출력
     events = events.filter((event) =>{
       return moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
     })
-    console.log('events', events)
+
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
 
     return (
@@ -94,7 +93,23 @@ let Agenda = React.createClass({
         return false
     }
   },
-
+   planTypeStyle(events, idx){
+        switch (events[idx].planType) {
+          case 1:
+            return 'kor'
+            break;
+          case 2:
+            return 'eng'
+            break;
+          case 3:
+            return 'math'
+            break;
+          case 4:
+            return ''        
+          default:
+            break;
+        }
+  },
   renderDay(day, events, dayKey){
     let {
         culture, components
@@ -102,8 +117,12 @@ let Agenda = React.createClass({
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
+<<<<<<< HEAD
     //console.log('this.props', this.props)
     //현재달인지 판단하여 필터를 겁니다.
+=======
+    
+>>>>>>> ae7e2ea93669f966c5fecb14efb0e46c2b2ebfb9
     events = events.filter(e => inRange(e, day, day, this.props))
 
     return events.map((event, idx) => {
@@ -125,7 +144,9 @@ let Agenda = React.createClass({
           ) : false
 
       let title = get(event, titleAccessor)
+      console.log(event)
       let planType = self.selectSummaryText(event.planType);
+      let planTypeStyle = planType ? `color ${this.planTypeStyle(events, idx)}`: ''
       return (
         <li key={dayKey + '_' + idx} className="schedule-list">
           {first}
@@ -138,7 +159,7 @@ let Agenda = React.createClass({
             <tbody>
               <tr>
                 {/*이곳에 타입에따른 스타일적용*/}
-                  <th className="kor color">
+                  <th className={planTypeStyle}>
                 {/*이곳에 타입에따른 스타일적용*/}
                     <div className="time">
                       <small>{moment(event.start).format('a')}</small>
