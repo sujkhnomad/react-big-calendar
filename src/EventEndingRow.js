@@ -3,6 +3,7 @@ import EventRowMixin from './EventRowMixin';
 import { eventLevels } from './utils/eventLevels';
 import message from './utils/messages';
 import range from 'lodash/range';
+import moment from 'moment';
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot;
 let eventsInSlot = (segments, slot) => segments.filter(seg => isSegmentInSlot(seg, slot)).length
@@ -16,12 +17,13 @@ let EventRow = React.createClass({
     slots: React.PropTypes.number,
     messages: React.PropTypes.object,
     onShowMore: React.PropTypes.func,
+    calendarInMonth:React.PropTypes.object,
   },
 
   mixins: [ EventRowMixin ],
 
   render(){
-    let { segments, slots: slotCount } = this.props;
+    let { segments, slots: slotCount, calendarInMonth } = this.props;
     let rowSegments = eventLevels(segments).levels[0];
 
     let current = 1
@@ -37,6 +39,12 @@ let EventRow = React.createClass({
       if (!event) {
         current++
         continue;
+      }
+      else{
+        if(!moment(event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)')){
+          current++
+          continue;
+        }
       }
 
       let gap = Math.max(0, left - lastEnd);
