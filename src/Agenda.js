@@ -55,7 +55,7 @@ let Agenda = React.createClass({
 
   render() {
     //let { length, date, events, startAccessor, calendarInMonth } = this.props;
-    let { events, startAccessor, calendarInMonth } = this.props;
+    let { events, startAccessor, calendarInMonth, notShowEmptyEventinDaysMode } = this.props;
     //let messages = message(this.props.messages);
     //let end = dates.add(date, length, 'day')
     //let range = dates.range(date, end, 'day');
@@ -70,17 +70,25 @@ let Agenda = React.createClass({
     })
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
-
-    return (
-      <div className='rbc-agenda-view calendar'>
-        <div className='rbc-agenda-content' ref='content'>
-          <ul ref='tbody' className="calendar-list" >
-            { range.map((day, idx) => this.renderDay(day, events, idx)) }
-          </ul>
-          <a href="#" className="btn-write">추가</a>
+    console.log('events', events)
+    if(events.length !== 0 || !notShowEmptyEventinDaysMode){
+      return (
+        <div className='rbc-agenda-view calendar'>
+          <div className='rbc-agenda-content' ref='content'>
+            <ul ref='tbody' className="calendar-list" >
+              { range.map((day, idx) => this.renderDay(day, events, idx)) }
+            </ul>
+            <a href="#" className="btn-write">추가</a>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else{
+      return(
+        <div>이벤트가 없습니다.</div>
+      )
+    }
+
   },
 
   selectSummaryText(type){
