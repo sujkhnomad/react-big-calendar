@@ -223,13 +223,6 @@ let Agenda = React.createClass({
     }
     else{
       let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
-<<<<<<< HEAD
-      return(
-        <li className='no-schedule' key={dayKey}>
-          <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
-        </li>
-      )
-=======
       if(notShowEmptyEventinDaysMode){
         return(
           <li className='no-schedule no-line' key={dayKey}/>
@@ -242,7 +235,6 @@ let Agenda = React.createClass({
           </li>
         )
       }
->>>>>>> 6361516ebc2ccc29c52d33200d51ebf42b5c620c
     }
   },
 
