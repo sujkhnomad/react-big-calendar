@@ -251,7 +251,7 @@ let MonthView = React.createClass({
             {isInMonth && label}
           </a>
         ) : (
-          <span>
+          <span style={{color:isSunDay?selectSunDayColor:''}}>
             {isInMonth && label}
           </span>
         )}

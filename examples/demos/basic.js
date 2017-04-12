@@ -45,7 +45,7 @@ class Basic extends React.Component {
         //일별 달력에서 이벤트가 없는 날은 보여주지 않습니다.
         notShowEmptyEventInDaysMode={true}
         //해당 달의 날짜만 표시할지 여부.
-        onlyShowInMonth={false}
+        onlyShowInMonth={true}
       />
     )
   }
