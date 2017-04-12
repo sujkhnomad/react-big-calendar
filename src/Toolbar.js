@@ -50,7 +50,7 @@ class Toolbar extends React.Component {
     return (
       <div className={toolbarStyle}>
         <span className='rbc-btn-group'>
-          <button
+          <a
             type='button'
             className='btn-prev'
             onClick={()=>{
@@ -65,9 +65,9 @@ class Toolbar extends React.Component {
             <span className='btn-text'>
               {messages.previous}
             </span>
-          </button>
+          </a>
 
-          <span className='rbc-toolbar-label'
+          <strong className='rbc-toolbar-label'
             onClick={()=>{
               if(headDateClick){
                 headDateClick({
@@ -77,9 +77,9 @@ class Toolbar extends React.Component {
             }}
           >
             { label }
-          </span>
+          </strong>
 
-          <button
+          <a
             type='button'
             className='btn-next'
             onClick={()=>{
@@ -94,7 +94,7 @@ class Toolbar extends React.Component {
             <span className='btn-text'>
                 {messages.next}
             </span>
-          </button>
+          </a>
         </span>
 
 

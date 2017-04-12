@@ -70,6 +70,18 @@ export default [
     'planType':1
   },
   {
+    'no':11112422,
+    'title': '국어 선생님과 수업일',
+    'start': new Date(2015, 3, 1, 8, 0, 0),
+    'end': new Date(2015, 3, 1, 8, 30, 0),
+    //CustomComponent를 사용하면 month타입 달력에서는 title 숨김상태가 됩니다.
+    'CustomComponent':<CustomComponent labelArr={['영어']}/>,
+    //특정 일정의 수정 권한 actor가 들어갈 예정입니다.
+    'planEditors':['교사', '관리자'],
+    //1:한글 2:영어 3:수학 4:일반 5:추천
+    'planType':2
+  },
+  {
     'no':11212222,
     'title': '수학 선생님과 수업일',
     'start': new Date(2015, 3, 1, 10, 0, 0),
@@ -121,7 +133,7 @@ export default [
     'no':11112223,
     'title': '수학 선생님과 수업일',
     'start': new Date(2015, 3, 7),
-    'end': new Date(2015, 3, 10),
+    'end': new Date(2015, 3, 7),
     'CustomComponent':<CustomComponent labelArr={['수학']}/>,
     'planType':3
   },
