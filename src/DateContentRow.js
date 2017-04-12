@@ -222,6 +222,7 @@ class DateContentRow extends React.Component {
               onShowMore={this.handleShowMore}
               eventComponent={eventComponent}
               eventWrapperComponent={eventWrapperComponent}
+              calendarInMonth={calendarInMonth}
             />
           )}
         </div>
