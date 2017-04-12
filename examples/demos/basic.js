@@ -3,6 +3,13 @@ import BigCalendar from '../../src';
 import events from '../events';
 
 class Basic extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.headDateClick = this.headDateClick.bind(this);
+    this.headPrevButtonClick = this.headPrevButtonClick.bind(this);
+    this.movheadNextButtonClickeEvent = this.headNextButtonClick.bind(this);
+  }
   headDateClick({view, date, label}){
     console.log('headDateClick');
     console.log ('view : ', view);
@@ -28,9 +35,9 @@ class Basic extends React.Component {
         {...this.props}
         events={events}
         defaultDate={new Date(2015, 3, 1)}
-        headDateClick={this.headDateClick.bind(this)}
-        headPrevButtonClick={this.headPrevButtonClick.bind(this)}
-        headNextButtonClick={this.headNextButtonClick.bind(this)}
+        headDateClick={this.headDateClick}
+        headPrevButtonClick={this.headPrevButtonClick}
+        headNextButtonClick={this.headNextButtonClick}
         sundayColor={'#bdbdbd'}
         //달별 달력에서 이벤트가 있는 공간을 클릭했을때 발생합니다.
         onSelectEvent={(event) => {

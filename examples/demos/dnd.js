@@ -49,6 +49,7 @@ class Dnd extends React.Component {
       <DragAndDropCalendar
         selectable
         events={events}
+        //드래그 앤 드랍시 발생합니다.
         onEventDrop={this.moveEvent}
         defaultDate={new Date(2015, 3, 1)}
         headDateClick={this.headDateClick}
