@@ -36,7 +36,7 @@ let Agenda = React.createClass({
     }),
     calendarInMonth: React.PropTypes.object,
     isTextBookSort:React.PropTypes.bool,
-    notShowEmptyEventinDaysMode:React.PropTypes.bool
+    notShowEmptyEventInDaysMode:React.PropTypes.bool
   },
 
   getDefaultProps() {
@@ -55,7 +55,7 @@ let Agenda = React.createClass({
 
   render() {
     //let { length, date, events, startAccessor, calendarInMonth } = this.props;
-    let { events, startAccessor, calendarInMonth, notShowEmptyEventinDaysMode } = this.props;
+    let { events, startAccessor, calendarInMonth, notShowEmptyEventInDaysMode } = this.props;
     //let messages = message(this.props.messages);
     //let end = dates.add(date, length, 'day')
     //let range = dates.range(date, end, 'day');
@@ -71,7 +71,7 @@ let Agenda = React.createClass({
 
     events.sort((a, b) => +get(a, startAccessor) - +get(b, startAccessor))
     console.log('events', events)
-    if(events.length !== 0 || !notShowEmptyEventinDaysMode){
+    if(events.length !== 0 || !notShowEmptyEventInDaysMode){
       return (
         <div className='rbc-agenda-view calendar'>
           <div className='rbc-agenda-content' ref='content'>
@@ -120,7 +120,7 @@ let Agenda = React.createClass({
   renderDay(day, events, dayKey){
     let {
         culture, components
-      , titleAccessor, agendaDateFormat, isTextBookSort, notShowEmptyEventinDaysMode } = this.props;
+      , titleAccessor, agendaDateFormat, isTextBookSort, notShowEmptyEventInDaysMode } = this.props;
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
@@ -223,7 +223,7 @@ let Agenda = React.createClass({
     }
     else{
       let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
-      if(notShowEmptyEventinDaysMode){
+      if(notShowEmptyEventInDaysMode){
         return false;
       }
       else{
