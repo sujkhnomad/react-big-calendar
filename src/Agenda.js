@@ -85,7 +85,7 @@ let Agenda = React.createClass({
     }
     else{
       return(
-        <div>이벤트가 없습니다.</div>
+        <p className="no-list">이벤트가 없습니다.</p>
       )
     }
 
