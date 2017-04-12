@@ -34,7 +34,8 @@ let Agenda = React.createClass({
       date: PropTypes.string,
       time: PropTypes.string,
     }),
-    calendarInMonth: React.PropTypes.object
+    calendarInMonth: React.PropTypes.object,
+    isTextBookSort:React.PropTypes.bool
   },
 
   getDefaultProps() {
@@ -110,30 +111,32 @@ let Agenda = React.createClass({
   renderDay(day, events, dayKey){
     let {
         culture, components
-      , titleAccessor, agendaDateFormat } = this.props;
+      , titleAccessor, agendaDateFormat, isTextBookSort } = this.props;
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
-    events = events.filter(e => inRange(e, day, day, this.props))
-    console.log('event', events)
-    events = events.sort((a, b)=>{
-      //둘다 교과일때
-      if(a.planType < 4 && b.planType < 4){
-        return moment(a.start).isAfter(b.start)
-      }
-      //a만 교과일때
-      else if(a.planType < 4){
-        return false
-      }
-      //b만 교과일때
-      else if(b.planType < 4){
-        return true
-      }
-      //그밖에
-      else{
-        return moment(a.start).isAfter(b.start)
-      }
-    })
+    events = events.filter(e => inRange(e, day, day, this.props));
+    //교과순 시간순 정렬
+    if(isTextBookSort){
+      events = events.sort((a, b)=>{
+        //둘다 교과일때
+        if(a.planType < 4 && b.planType < 4){
+          return moment(a.start).isAfter(b.start)
+        }
+        //a만 교과일때
+        else if(a.planType < 4){
+          return false
+        }
+        //b만 교과일때
+        else if(b.planType < 4){
+          return true
+        }
+        //그밖에
+        else{
+          return moment(a.start).isAfter(b.start)
+        }
+      });
+    }
 
     if(0 != events.length){
       return events.map((event, idx) => {

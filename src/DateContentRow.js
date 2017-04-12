@@ -39,7 +39,8 @@ const propTypes = {
   eventWrapperComponent: elementType.isRequired,
   minRows: React.PropTypes.number.isRequired,
   maxRows: React.PropTypes.number.isRequired,
-  calendarInMonth: React.PropTypes.object
+  calendarInMonth: React.PropTypes.object,
+  isTextBookSort:React.PropTypes.bool
 };
 
 const defaultProps = {
@@ -151,6 +152,7 @@ class DateContentRow extends React.Component {
       onSelectStart,
       onSelectEnd,
       calendarInMonth,
+      isTextBookSort,
       ...props
     } = this.props;
 
@@ -163,6 +165,27 @@ class DateContentRow extends React.Component {
       startAccessor,
       endAccessor
     }))
+    //교과순 시간순 정렬
+    if(isTextBookSort){
+      segments = segments.sort((a, b)=>{
+        //둘다 교과일때
+        if(a.event.planType < 4 && b.event.planType < 4){
+          return moment(a.event.start).isAfter(b.event.start)
+        }
+        //a만 교과일때
+        else if(a.event.planType < 4){
+          return false
+        }
+        //b만 교과일때
+        else if(b.event.planType < 4){
+          return true
+        }
+        //그밖에
+        else{
+          return moment(a.event.start).isAfter(b.event.start)
+        }
+      });
+    }
 
     let { levels, extra } = eventLevels(segments, Math.max(maxRows - 1, 1));
 

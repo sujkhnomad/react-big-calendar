@@ -39,6 +39,8 @@ class Basic extends React.Component {
           console.log(slotInfo)
           console.log(`selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +`\nend: ${slotInfo.end.toLocaleString()}`)
         }}
+        //true : 교과순 다음 시간순 정렬설정 false : 시간순 정렬
+        isTextBookSort={true}
       />
     )
   }

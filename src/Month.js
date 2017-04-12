@@ -74,7 +74,8 @@ let propTypes = {
     })
   ]),
   sundayColor: React.PropTypes.string,
-  calendarInMonth:React.PropTypes.object
+  calendarInMonth:React.PropTypes.object,
+  isTextBookSort:React.PropTypes.bool
 };
 
 let MonthView = React.createClass({
@@ -168,7 +169,8 @@ let MonthView = React.createClass({
       eventPropGetter,
       messages,
       calendarInMonth,
-      selected } = this.props;
+      selected,
+      isTextBookSort } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
 
@@ -208,6 +210,7 @@ let MonthView = React.createClass({
         dateCellWrapper={components.dateCellWrapper}
 
         calendarInMonth={calendarInMonth}
+        isTextBookSort={isTextBookSort}
       />
     )
   },
