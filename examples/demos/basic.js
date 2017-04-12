@@ -41,6 +41,8 @@ class Basic extends React.Component {
         }}
         //true : 교과순 다음 시간순 정렬설정 false : 시간순 정렬
         isTextBookSort={true}
+        //일별 달력에서 이벤트가 없는 날은 보여주지 않습니다.
+        notShowEmptyEventinDaysMode={false}
       />
     )
   }

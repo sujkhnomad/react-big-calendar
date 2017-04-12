@@ -35,7 +35,8 @@ let Agenda = React.createClass({
       time: PropTypes.string,
     }),
     calendarInMonth: React.PropTypes.object,
-    isTextBookSort:React.PropTypes.bool
+    isTextBookSort:React.PropTypes.bool,
+    notShowEmptyEventinDaysMode:React.PropTypes.bool
   },
 
   getDefaultProps() {
@@ -111,7 +112,7 @@ let Agenda = React.createClass({
   renderDay(day, events, dayKey){
     let {
         culture, components
-      , titleAccessor, agendaDateFormat, isTextBookSort } = this.props;
+      , titleAccessor, agendaDateFormat, isTextBookSort, notShowEmptyEventinDaysMode } = this.props;
     let self = this;
     let EventComponent = components.event;
     let DateComponent = components.date;
@@ -214,11 +215,18 @@ let Agenda = React.createClass({
     }
     else{
       let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
-      return(
-        <li className='no-schedule no-line' key={dayKey}>
-          <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
-        </li>
-      )
+      if(notShowEmptyEventinDaysMode){
+        return(
+          <li className='no-schedule no-line' key={dayKey}/>
+        )
+      }
+      else{
+        return(
+          <li className='no-schedule no-line' key={dayKey}>
+            <h2>{dateLabelArr[0]}<span>{dateLabelArr[1]}</span></h2>
+          </li>
+        )
+      }
     }
   },
 

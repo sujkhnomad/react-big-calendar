@@ -436,7 +436,8 @@ let Calendar = React.createClass({
     headPrevButtonClick:React.PropTypes.func,
     headNextButtonClick:React.PropTypes.func,
     sundayColor:React.PropTypes.string,
-    isTextBookSort:React.PropTypes.bool
+    isTextBookSort:React.PropTypes.bool,
+    notShowEmptyEventinDaysMode:React.PropTypes.bool
   },
 
   getDefaultProps() {
@@ -504,6 +505,7 @@ let Calendar = React.createClass({
       , elementProps
       , date: current
       , isTextBookSort
+      , notShowEmptyEventinDaysMode
       , ...props } = this.props;
 
     formats = defaultFormats(formats)
@@ -563,6 +565,7 @@ let Calendar = React.createClass({
           onShowMore={this._showMore}
           calendarInMonth={calendarInMonth}
           isTextBookSort={isTextBookSort}
+          notShowEmptyEventinDaysMode={notShowEmptyEventinDaysMode}
         />
       </div>
     );
