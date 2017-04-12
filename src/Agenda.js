@@ -224,9 +224,7 @@ let Agenda = React.createClass({
     else{
       let dateLabelArr = localizer.format(day, agendaDateFormat, culture).split(' ')
       if(notShowEmptyEventinDaysMode){
-        return(
-          <div key={dayKey}/>
-        )
+        return false;
       }
       else{
         return(
