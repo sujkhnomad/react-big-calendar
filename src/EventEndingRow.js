@@ -18,6 +18,7 @@ let EventRow = React.createClass({
     messages: React.PropTypes.object,
     onShowMore: React.PropTypes.func,
     calendarInMonth:React.PropTypes.object,
+
   },
 
   mixins: [ EventRowMixin ],

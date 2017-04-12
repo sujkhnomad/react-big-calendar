@@ -40,7 +40,8 @@ const propTypes = {
   minRows: React.PropTypes.number.isRequired,
   maxRows: React.PropTypes.number.isRequired,
   calendarInMonth: React.PropTypes.object,
-  isTextBookSort:React.PropTypes.bool
+  isTextBookSort:React.PropTypes.bool,
+  onlyShowInMonth:React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -153,6 +154,7 @@ class DateContentRow extends React.Component {
       onSelectEnd,
       calendarInMonth,
       isTextBookSort,
+      onlyShowInMonth,
       ...props
     } = this.props;
 
@@ -212,6 +214,10 @@ class DateContentRow extends React.Component {
           )}
           {levels.map((segs, idx) => {
             let isInMonth = moment(segs[0].event.start).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
+            //onlyShowInMonth false이면 전달 31일등 칸이 존재하는데로 보여줍니다.
+            if(!onlyShowInMonth){
+              isInMonth = true
+            }
 
             if(isInMonth){
               return(

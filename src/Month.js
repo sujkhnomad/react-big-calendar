@@ -75,7 +75,8 @@ let propTypes = {
   ]),
   sundayColor: React.PropTypes.string,
   calendarInMonth:React.PropTypes.object,
-  isTextBookSort:React.PropTypes.bool
+  isTextBookSort:React.PropTypes.bool,
+  onlyShowInMonth:React.PropTypes.bool,
 };
 
 let MonthView = React.createClass({
@@ -170,7 +171,8 @@ let MonthView = React.createClass({
       messages,
       calendarInMonth,
       selected,
-      isTextBookSort } = this.props;
+      isTextBookSort,
+      onlyShowInMonth} = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
 
@@ -211,12 +213,13 @@ let MonthView = React.createClass({
 
         calendarInMonth={calendarInMonth}
         isTextBookSort={isTextBookSort}
+        onlyShowInMonth={onlyShowInMonth}
       />
     )
   },
 
   readerDateHeading({ date, className, ...props }) {
-    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor, calendarInMonth  } = this.props;
+    let { date: currentDate, getDrilldownView, dateFormat, culture, sundayColor, calendarInMonth, onlyShowInMonth  } = this.props;
     let isOffRange = dates.month(date) !== dates.month(currentDate);
     let isCurrent = dates.eq(date, currentDate, 'day');
     let drilldownView = getDrilldownView(date);
@@ -226,7 +229,10 @@ let MonthView = React.createClass({
     let selectSunDayColor = sundayColor ? sundayColor : DEFUALT_COLOR.SUNDAY;
     //같은 달 체크
     let isInMonth = moment(date).isBetween(calendarInMonth, moment(calendarInMonth).add(1, 'month'), null, '[)');
-
+    //onlyShowInMonth false이면 전달 31일등 칸이 존재하는데로 보여줍니다.
+    if(!onlyShowInMonth){
+      isInMonth = true;
+    }
     return (
       <div
         {...props}
